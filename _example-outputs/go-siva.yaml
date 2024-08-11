@@ -1,0 +1,6 @@
+- kind: added
+  description: 'Merge pull request #3 from smola/fix-imports  Fix go-siva import name.'
+- kind: added
+  description: 'Merge pull request #2 from smola/fix-typo  fix typo in file name.'
+- kind: added
+  description: Merge branch 'master' of github.com:src-d/iba
