@@ -16,7 +16,7 @@ tasks:
      - task: test:fixture:go-siva
      - task: test:fixture:conventional-changelog
      - task: test:fixture:cosmo
-     - task: test:build
+     - task: build
   .cli:
     internal: true
     cmd: |
