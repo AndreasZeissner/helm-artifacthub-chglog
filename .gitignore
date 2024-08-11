@@ -32,3 +32,6 @@ fixtures/**
 
 # binaries
 bin/
+
+# ensure Taskfiles are commitable
+!Taskfile*

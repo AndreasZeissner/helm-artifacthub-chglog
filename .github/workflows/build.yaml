@@ -9,6 +9,7 @@ on:
     paths:
       - '**.go'
       - '.github/**/*.yaml'
+      - 'Taskfile.yml'
 
 jobs:
   build:
