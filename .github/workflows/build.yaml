@@ -8,8 +8,6 @@ on:
       - develop
     paths:
       - '**.go'
-    paths-ignore:
-      - '**.md'
 
 jobs:
   build:
