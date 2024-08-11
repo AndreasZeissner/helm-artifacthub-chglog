@@ -32,7 +32,7 @@ func TestGeneratingSimpleArtifactChangelog(t *testing.T) {
 		t.Run(tt.repoURL, func(t *testing.T) {
 			logs := chglog.GenerateChangelogForRepo(tt.from, tt.to, tt.repoURL, []string{})
 			if tt.len != len(logs) {
-				t.Errorf("got %d want %d", tt.len, len(logs))
+				t.Errorf("want %d got %d", tt.len, len(logs))
 			}
 		})
 	}
