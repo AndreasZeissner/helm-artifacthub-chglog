@@ -12,11 +12,11 @@ vars:
 tasks:
   default:
     cmds:
-     - task: test:e2e
-     - task: test:fixture:go-siva
-     - task: test:fixture:conventional-changelog
-     - task: test:fixture:cosmo
-     - task: build
+      - task: test:e2e
+      - task: test:fixture:go-siva
+      - task: test:fixture:conventional-changelog
+      - task: test:fixture:cosmo
+      - task: build
   .cli:
     internal: true
     cmd: |
