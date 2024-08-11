@@ -29,3 +29,6 @@ fixtures/**
 
 # Taskfile Cache
 .task/
+
+# binaries
+bin/

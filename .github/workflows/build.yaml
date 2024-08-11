@@ -1,0 +1,31 @@
+---
+name: build
+run-name: build by @${{ github.actor }}
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - '**.go'
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+      - name: Setup go-task / task / taskfile
+        uses: rnorton5432/setup-task@v1
+      - name: Cache
+        uses: actions/cache@v4.0.2
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/.cache/go-mod
+            fixtures/
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+      - name: run default task
+        run: task
