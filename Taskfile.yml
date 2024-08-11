@@ -1,0 +1,111 @@
+# https://taskfile.dev
+---
+version: '3'
+
+vars:
+  TO_TAG: '{{ .TO_TAG | default "v1.7.0" }}'
+  FROM_TAG: '{{ .FROM_TAG | default "v1.0.0" }}'
+  REPO_URL: '{{ .REPO_URL | default "https://github.com/src-d/go-siva" }}'
+  TESTDATA_DIR: '{{ .TESTDATA_DIR | default "fixtures" }}'
+  OUTPUT: '{{ .OUTPUT | default "output" }}'
+
+tasks:
+  default:
+    cmds:
+     - task: test:e2e
+     - task: test:fixture:go-siva
+     - task: test:fixture:conventional-changelog
+     - task: test:fixture:cosmo
+     - task: test:build
+  .cli:
+    internal: true
+    cmd: |
+      go run main.go \
+        --to {{ .TO_TAG }} \
+        --from {{ .FROM_TAG }} \
+        --repoURL {{ .REPO_URL }} \
+        --output {{ .OUTPUT }}
+  build:
+    deps:
+      - tidy
+      - fmt
+    cmds:
+      - go build -o bin/helm-artifacthub-chglog main.go
+  run:
+    deps:
+      - tidy
+      - fmt
+    cmds:
+      - go run main.go
+  tidy:
+    cmds:
+      - go mod tidy
+  fmt:
+    cmds:
+      - go fmt ./...
+  test:
+    deps:
+      - tidy
+    cmds:
+      - go test $(go list ./... | grep -v /e2e/)
+  test:e2e:
+    deps:
+      - .test:e2e:testdata
+    cmds:
+      - echo $REPO_URL
+      - go test -v ./e2e
+
+  # test:fixture:[repo]
+  test:fixture:go-siva:
+    deps:
+      - .test:fixture
+    cmds:
+      - task: .cli
+        vars:
+          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/go-siva"
+          FROM_TAG: "v1.0.0"
+          TO_TAG: "v1.7.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/go-siva.yaml"
+  test:fixture:conventional-changelog:
+    deps:
+      - .test:fixture
+    cmds:
+      - task: .cli
+        vars:
+          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/conventional-changelog"
+          FROM_TAG: "v1.1.0"
+          TO_TAG: "v0.0.4"
+          OUTPUT: "{{ .PWD }}/_example-outputs/conventional-changelog.yaml"
+  test:fixture:cosmo:
+    deps:
+      - .test:fixture
+    cmds:
+      - task: .cli
+        vars:
+          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo"
+          FROM_TAG: "router@0.89.2"
+          TO_TAG: "router@0.13.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo.yaml"
+  # test helper
+  .test:fixture:output:
+    internal: true
+    cmds:
+      - mkdir -p {{ .PWD }}/_example-outputs
+    sources:
+      - '{{ .PWD }}/_example-outputs'
+  .test:e2e:testdata:
+    internal: true
+    cmds:
+      - mkdir -p {{ .PWD }}/{{ .TESTDATA_DIR }}
+      - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/wundergraph/cosmo.git
+      - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/conventional-changelog || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/conventional-changelog/conventional-changelog.git
+      - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/go-siva || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/src-d/go-siva.git
+    sources:
+      - '{{ .PWD }}/{{ .TESTDATA_DIR }}/**'
+  .test:fixture:
+    internal: true
+    deps:
+      - .test:e2e:testdata
+      - tidy
+      - fmt
+      - .test:fixture:output
