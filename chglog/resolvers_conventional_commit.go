@@ -1,6 +1,7 @@
 package chglog
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/go-git/go-git/v5/plumbing/object"
@@ -55,44 +56,45 @@ func (r *ConventionalCommitsResolver) parseDescription() string {
 	return message
 }
 
-func (r *ConventionalCommitsResolver) ResolveChangelogEntry() *ArtifactHubChangelogObject {
+func (r *ConventionalCommitsResolver) ResolveChangelogEntry() (*ArtifactHubChangelogObject, error) {
 	switch {
 	case r.isAdded():
 		return &ArtifactHubChangelogObject{
 			Kind:        KindAdded,
 			Description: r.parseDescription(),
 			Links:       []ArtifactHubChangelogObjectLinks{},
-		}
+		}, nil
 	case r.isChanged():
 		return &ArtifactHubChangelogObject{
 			Kind:        KindChanged,
 			Description: r.parseDescription(),
 			Links:       []ArtifactHubChangelogObjectLinks{},
-		}
+		}, nil
 	case r.isDeprecated():
 		return &ArtifactHubChangelogObject{
 			Kind:        KindDeprecated,
 			Description: r.parseDescription(),
 			Links:       []ArtifactHubChangelogObjectLinks{},
-		}
+		}, nil
 	case r.isRemoved():
 		return &ArtifactHubChangelogObject{
 			Kind:        KindRemoved,
 			Description: r.parseDescription(),
 			Links:       []ArtifactHubChangelogObjectLinks{},
-		}
+		}, nil
 	case r.isFixed():
 		return &ArtifactHubChangelogObject{
 			Kind:        KindFixed,
 			Description: r.parseDescription(),
 			Links:       []ArtifactHubChangelogObjectLinks{},
-		}
+		}, nil
 	case r.isSecurity():
 		return &ArtifactHubChangelogObject{
 			Kind:        KindSecurity,
 			Description: r.parseDescription(),
 			Links:       []ArtifactHubChangelogObjectLinks{},
-		}
+		}, nil
+	default:
+		return nil, fmt.Errorf("unresolvable commit: %s", r.Message)
 	}
-	return nil
 }

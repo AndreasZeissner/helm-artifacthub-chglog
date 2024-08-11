@@ -33,7 +33,7 @@ const (
 )
 
 type ArtifactHubChangelogResolverInterface interface {
-	ResolveChangelogEntry() *ArtifactHubChangelogObject
+	ResolveChangelogEntry() (*ArtifactHubChangelogObject, error)
 
 	isAdded() bool
 	isChanged() bool

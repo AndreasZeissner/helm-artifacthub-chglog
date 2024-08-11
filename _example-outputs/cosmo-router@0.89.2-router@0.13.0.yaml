@@ -1,0 +1,208 @@
+- kind: added
+  description: 'feat: improve operation parsing (#810)'
+- kind: added
+  description: 'feat: implement subscription filter (#780)  Co-authored-by: starptech <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: add support for websocket subprotocol (#776)'
+- kind: added
+  description: 'feat: implement upgrade request allow list to forward headers and query params to the engine (#748)'
+- kind: added
+  description: 'feat: refactor edfs and add kafka support (#770)  Co-authored-by: Aenimus <daviditstutt@gmail.com>'
+- kind: added
+  description: 'feat: support inaccessible and add foundation for contracts (#764)'
+- kind: added
+  description: 'feat: log subgraph errors (#753)'
+- kind: added
+  description: 'feat: improve Subgraph error propagation (#752)'
+- kind: added
+  description: 'feat: allow to rename client headers on propagate to subgraphs (#674)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: support entity targets (implicit keys) (#724)'
+- kind: added
+  description: 'feat: support Redis connection strings in router (#697)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: support edfs subscription stream/consumer; multiple subjects (#685)'
+- kind: added
+  description: 'feat: subgraph error handling and instrumentation (#675)'
+- kind: added
+  description: 'feat: add initial payload on WS origin connections (#667)'
+- kind: added
+  description: 'feat: multi platform docker builds (#665)'
+- kind: added
+  description: "feat: support authentication and multiple sources for nats edfs (#635)  Co-authored-by: spetrunin <neyasut@gmail.com>\r Co-authored-by: Sergiy <818351+devsergiy@users.noreply.github.com>"
+- kind: added
+  description: 'feat: allow exposing upgrade errors (#647)'
+- kind: added
+  description: 'feat: router config signature validation through custom admission webhooks (#628)'
+- kind: added
+  description: 'feat: allow blocking mutations, subscriptions, non-persisted operations via router config (#627)'
+- kind: added
+  description: 'feat: add edfs validation; add event source name keys to config (#624)'
+- kind: added
+  description: 'feat: improve planning time of a big queries (#609)'
+- kind: added
+  description: 'feat: tls and mTLS server support (#600)'
+- kind: added
+  description: 'feat: unify OTEL tracing and ART (#588)'
+- kind: added
+  description: 'feat: add option to redact IP in traces and logs (#561)'
+- kind: added
+  description: 'feat(metrics): collect OS type and enrich traces with resource instan… (#546)'
+- kind: added
+  description: 'feat: use json schema to validate and document router config (#545)'
+- kind: added
+  description: 'feat: add support for absinthe WebSocket protocol (#541)  Co-authored-by: Sven <sven.widen@gmail.com>'
+- kind: added
+  description: 'feat: router fleet management (#515)'
+- kind: added
+  description: 'feat: implement graphql over sse (#519)'
+- kind: added
+  description: 'feat: distributed rate limiting (#499)'
+- kind: changed
+  description: 'refactor(traces): improve root span instrumentation (#496)'
+- kind: added
+  description: 'feat: consider only router root spans in the trace list (#495)'
+- kind: added
+  description: 'feat: allow to force root span on the router (#486)'
+- kind: added
+  description: 'feat: cosmo ai, generate docs on publish (#466)'
+- kind: added
+  description: 'feat: make execution plan cache & resolve concurrency configurable (#469)'
+- kind: added
+  description: 'feat: implement authorization directives (#448)  Co-authored-by: Jens Neuse <jens@wundergraph.com>'
+- kind: added
+  description: 'feat: add federated graph id to attributes (#464)'
+- kind: added
+  description: 'feat: namespaces (#447)'
+- kind: added
+  description: 'feat: produce spans for handler and engine work (#456)'
+- kind: added
+  description: 'feat: allow custom playground path (#452)'
+- kind: added
+  description: 'feat(router): aws lambda support (#446)  Co-authored-by: Suvij Surya <suvijsurya76@gmail.com>'
+- kind: added
+  description: 'feat: implement key resolvable false and implicit entities (#445)'
+- kind: added
+  description: 'feat: improve subscriptions (#425)  Co-authored-by: StarpTech <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: support custom trace propagation (#420)'
+- kind: added
+  description: 'feat: provide router config over cdn (#411)  Co-authored-by: StarpTech <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: refactor ws impl and add test framework (#406)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: add support of interface objects (#407)'
+- kind: added
+  description: 'feat: track subgraphs in metrics (#405)'
+- kind: added
+  description: 'feat: billing and limit refactoring (#371)  Co-authored-by: StarpTech <deusdustin@gmail.com>'
+- kind: changed
+  description: 'refactor(prometheus): prometheus integration (#388)  Skip Router CI due to known race conditions in tests'
+- kind: added
+  description: "feat: add NATS to the router (#333)  Co-authored-by: Aenimus <daviditstutt@gmail.com>\r Co-authored-by: Aenimus <47415099+Aenimus@users.noreply.github.com>"
+- kind: added
+  description: 'feat: improve subgraph error handling (#382)'
+- kind: added
+  description: 'feat: add singleflight to transport (#372)'
+- kind: added
+  description: 'feat: add rbac for subgraphs and federated graphs (#351)'
+- kind: changed
+  description: 'refactor: make the main HTTP router not dependent on the active GraphQL server (#347)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: add ability to pass a custom health checker (#346)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: changed
+  description: 'refactor: use ristretto for the CDN in-memory cache (#329)'
+- kind: added
+  description: 'feat: persist ops from playground and view all client ops (#323)  Co-authored-by: Alberto García Hierro <alberto@garciahierro.com>'
+- kind: added
+  description: 'feat: improve support for extensions and initial payloads (#324)  Co-authored-by: Jens Neuse <jens.neuse@gmx.de>'
+- kind: added
+  description: 'feat: register router on the controlplane (#318)'
+- kind: added
+  description: 'feat: add helm chart for CDN (#307)'
+- kind: added
+  description: 'feat: add client extensions (#319)  Co-authored-by: fiam <alberto@garciahierro.com>'
+- kind: added
+  description: Merge branch 'main' of github.com:wundergraph/cosmo into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
+- kind: added
+  description: Merge branch 'main' into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
+- kind: added
+  description: Merge branch 'main' into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
+- kind: added
+  description: Merge branch 'main' of github.com:wundergraph/cosmo into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
+- kind: added
+  description: 'feat: add support for enabling pprof handlers (#298)'
+- kind: added
+  description: 'feat: improve art (#293)'
+- kind: added
+  description: 'feat: log traceID (#284)'
+- kind: added
+  description: "feat: add support for persisted operations (#249)  Add support to upload persisted operations using the CLI to the controlplane, saving them in S3 storage. From the router, add support for retrieving persisted operations from the Cosmo CDN when the client sends a request indicating a PO should be used.\r \r Persisted operations are for now scoped to the org/federated graph/client-id and can never be deleted.\r \r Additionally, persisted operation keys are always derived using the sha256 hash of the operation body. This allow us to use a content-addressable URL scheme that can be cached forever.\r \r Co-authored-by: JivusAyrus <suvijsurya76@gmail.com>\r Co-authored-by: Dustin Deus <deusdustin@gmail.com>"
+- kind: added
+  description: 'feat: improve correctness of resolving (#281)'
+- kind: added
+  description: 'feat: add tracing to request (#263)'
+- kind: added
+  description: 'feat: auto set GOMAXPROCS to avoid CPU throttling on cont envs (#276)'
+- kind: added
+  description: 'feat(router): allow to start router without token and graph name when providing static config (#264)'
+- kind: added
+  description: 'feat: consider input and argument usage for breaking change detection (#255)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: add support for header forwarding with websocket requests (#212)'
+- kind: added
+  description: 'feat: automatically translate failed requests to localhost to docker.host.internal (#224)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: upgrade minimum required Go version to 1.21 (#239)'
+- kind: added
+  description: 'feat(controlplane): avoid downloading config for latest check (#236)'
+- kind: added
+  description: 'feat: operation checks (breaking change detection) (#214)  Co-authored-by: thisisnithin <nithinkumar5353@gmail.com>'
+- kind: added
+  description: "feat: add support for router config generation to composition-go (#218)  Extend composition-go with a new BuildRouterConfiguration() function. This allows us to use composition-go\r during integration tests instead of calling out to wgc via the command line. Update README to include instructions\r on how to keep the generated files within the library up to date."
+- kind: added
+  description: Merge remote-tracking branch 'origin/main'
+- kind: added
+  description: 'feat: allow to exclude certain OTEL metrics and labels from prometheus export (#209)'
+- kind: added
+  description: 'feat: add support for authentication via JWKS (#200)'
+- kind: added
+  description: "feat: schema field level usage analytics (#174)  Co-authored-by: Jens Neuse <jens.neuse@gmx.de>\r Co-authored-by: Aenimus <daviditstutt@gmail.com>\r Co-authored-by: Nithin Kumar B <nithinkumar5353@gmail.com>\r Co-authored-by: fiam <alberto@garciahierro.com>"
+- kind: added
+  description: 'feat: add support for subscriptions (#185)'
+- kind: added
+  description: 'feat(router): support limiting request body size (#190)'
+- kind: added
+  description: 'feat: add graphql client info to metric attributes (#176)'
+- kind: added
+  description: 'feat: version metric meter (#160)'
+- kind: added
+  description: "feat: use clickhouse as metric storage (#137)  Co-authored-by: Alberto García Hierro <alberto@garciahierro.com>\r Co-authored-by: Eelco Wiersma <eelco@appulse.nl>"
+- kind: added
+  description: "feat: support subgraph router url override (#152)  Co-authored-by: Clarence Manuel <rencedm112@gmail.com>\r Co-authored-by: Clarence Delmacio Manuel <71768661+cs-clarence@users.noreply.github.com>"
+- kind: added
+  description: 'feat: improve trail version banner and handle trial version expiry (#138)'
+- kind: added
+  description: 'feat: expand environmental variables in config.yaml (#108)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: support per subgraph header rules (#110)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat(router): make subgraph transport timeouts configurable (#116)'
+- kind: added
+  description: 'feat: don''t poll router config when config hasn''t changed (#105)'
+- kind: added
+  description: 'feat: store subgraphs in router config (#61)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: make request timeout configurable (#87)'
+- kind: added
+  description: 'feat(config): support configuration of graphql path (#82)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: added
+  description: 'feat: implement backoff jitter retry mechanism (#79)'
+- kind: added
+  description: 'feat: enable client compression for metrics and traces (#78)'
+- kind: added
+  description: 'feat: only generate node api for router (#76)'
+- kind: added
+  description: 'feat: webhooks (#66)'
+- kind: added
+  description: 'feat: add user registration (#57)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'

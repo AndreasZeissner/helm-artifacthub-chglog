@@ -34,7 +34,7 @@ func NewChglogCli() *cli.App {
 			},
 			&cli.StringSliceFlag{
 				Name:     "paths",
-				Usage:    "list of paths to include the changelogs for",
+				Usage:    "list of subdirectories from which to take the commits",
 				Required: false,
 			},
 		},

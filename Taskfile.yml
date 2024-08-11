@@ -8,6 +8,8 @@ vars:
   REPO_URL: '{{ .REPO_URL | default "https://github.com/src-d/go-siva" }}'
   TESTDATA_DIR: '{{ .TESTDATA_DIR | default "fixtures" }}'
   OUTPUT: '{{ .OUTPUT | default "output" }}'
+  # --paths x --paths y
+  PATHS: '{{ .PATHS | default "" }}'
 
 tasks:
   default:
@@ -16,6 +18,7 @@ tasks:
       - task: test:fixture:go-siva
       - task: test:fixture:conventional-changelog
       - task: test:fixture:cosmo
+      - task: test:fixture:cosmo:dir:router
       - task: build
   .cli:
     internal: true
@@ -24,6 +27,7 @@ tasks:
         --to {{ .TO_TAG }} \
         --from {{ .FROM_TAG }} \
         --repoURL {{ .REPO_URL }} \
+        {{ .PATHS }} \
         --output {{ .OUTPUT }}
   build:
     deps:
@@ -86,6 +90,17 @@ tasks:
           FROM_TAG: "router@0.89.2"
           TO_TAG: "router@0.13.0"
           OUTPUT: "{{ .PWD }}/_example-outputs/cosmo.yaml"
+  test:fixture:cosmo:dir:router:
+    deps:
+      - .test:fixture
+    cmds:
+      - task: .cli
+        vars:
+          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo"
+          FROM_TAG: "router@0.89.2"
+          TO_TAG: "router@0.13.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-router@0.89.2-router@0.13.0.yaml"
+          PATHS: "--paths router"
   # test helper
   .test:fixture:output:
     internal: true

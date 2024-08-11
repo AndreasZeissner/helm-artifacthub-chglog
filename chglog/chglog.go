@@ -12,6 +12,10 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+const (
+	StopIteration = "StopIteration"
+)
+
 func GenerateChangelogForRepo(from, to, repoURL string, subdirectories []string) []*ArtifactHubChangelogObject {
 	chglogs := []*ArtifactHubChangelogObject{}
 	repo := OpenRepo(repoURL)
@@ -28,12 +32,12 @@ func GenerateChangelogForRepo(from, to, repoURL string, subdirectories []string)
 
 	err = commitIter.ForEach(func(c *object.Commit) error {
 		if c.Hash == toCommit.Hash {
-			return fmt.Errorf("StopIteration")
+			return fmt.Errorf(StopIteration)
 		}
 		if len(subdirectories) > 0 {
 			parent, err := c.Parent(0)
 			if err != nil {
-				log.Printf("no parent found for %s %s", c.Message, err)
+				return err
 			}
 
 			patch, err := c.Patch(parent)
@@ -43,23 +47,28 @@ func GenerateChangelogForRepo(from, to, repoURL string, subdirectories []string)
 			for _, fileStat := range patch.Stats() {
 				for _, subdir := range subdirectories {
 					if strings.HasPrefix(fileStat.Name, subdir) {
+						resolver := NewConventionalCommitsResolver(c)
+						chglog, err := resolver.ResolveChangelogEntry()
+						if err != nil {
+							return nil
+						}
+						chglogs = append(chglogs, chglog)
 						return nil
 					}
 				}
 			}
 		} else {
 			resolver := NewConventionalCommitsResolver(c)
-			chglog := resolver.ResolveChangelogEntry()
-			if chglog == nil {
-				log.Printf("unresolvable commit: %s", c.Message)
-			} else {
-				chglogs = append(chglogs, chglog)
+			chglog, err := resolver.ResolveChangelogEntry()
+			if err != nil {
+				return nil
 			}
+			chglogs = append(chglogs, chglog)
 		}
 
 		return nil
 	})
-	if err != nil && err.Error() != "StopIteration" {
+	if err != nil && err.Error() != StopIteration {
 		log.Fatalf("Error iterating commits: %v", err)
 	}
 
