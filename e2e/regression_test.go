@@ -6,15 +6,17 @@ import (
 	"github.com/AndreasZeissner/helm-artifacthub-chglog/chglog"
 )
 
+type testCase struct {
+	repoURL        string
+	res            bool
+	from           string
+	to             string
+	len            int
+	subdirectories []string
+}
+
 func TestGeneratingSimpleArtifactChangelog(t *testing.T) {
-	var testCase = []struct {
-		repoURL        string
-		res            bool
-		from           string
-		to             string
-		len            int
-		subdirectories []string
-	}{
+	var testCase = []testCase{
 		{
 			repoURL:        "../fixtures/go-siva",
 			from:           "v1.0.0",
