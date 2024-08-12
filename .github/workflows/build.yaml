@@ -2,6 +2,11 @@
 name: build
 run-name: build by @${{ github.actor }}
 on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
   push:
     branches:
       - main
@@ -15,6 +20,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: dump-gh-context
+        id: github_context_step
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
       - name: Checkout
         uses: actions/checkout@v4.1.7
       - name: Setup go-task / task / taskfile
