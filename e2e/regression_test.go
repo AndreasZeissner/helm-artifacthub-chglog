@@ -8,7 +8,6 @@ import (
 
 type testCase struct {
 	repoURL        string
-	res            bool
 	from           string
 	to             string
 	len            int
