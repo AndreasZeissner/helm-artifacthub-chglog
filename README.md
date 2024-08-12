@@ -37,11 +37,27 @@ Will generate: `helm-artifacthub-chglog/_example-outputs/go-siva.yaml` and use t
  go run main.go \
   --to router@0.13.0 \
   --from router@0.89.2 \
-  --repoURL helm-artifacthub-chglog/fixtures/cosmo \
+  --repourl helm-artifacthub-chglog/fixtures/cosmo \
   --paths router \
   --output helm-artifacthub-chglog/_example-outputs/cosmo-router@0.89.2-router@0.13.0.yaml
 ```
 
-Will generate: `helm-artifacthub-chglog/_example-outputs/cosmo-router@0.89.2-router@0.13.0.yaml`.
+will generate: `helm-artifacthub-chglog/_example-outputs/cosmo-router@0.89.2-router@0.13.0.yaml`.
 
-Those commits are all those between two tags `from` `to` and related to paths in the repository.
+those commits are all those between two tags `from` `to` and related to paths in the repository.
+
+All commands can be run with [task](https://taskfile.dev/).
+
+e.g.:
+
+```
+# Quick Start
+task # will run all tests and build the binary
+
+
+# Fixtures tests
+task test:fixture:conventional-changelog # runs the fixture tests on https://github.com/conventional-changelog/conventional-changelog.git
+
+# E2E tests and build
+task test:e2e build # run the tests in the e2e folder and build the binary
+```
