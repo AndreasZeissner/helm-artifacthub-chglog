@@ -19,8 +19,9 @@ func NewConventionalCommitsResolver(c *object.Commit) *ConventionalCommitsResolv
 
 func (r *ConventionalCommitsResolver) isAdded() bool {
 	return strings.HasPrefix(r.Message, "feat") ||
-		strings.HasPrefix(r.Message, "feature") ||
-		strings.HasPrefix(r.Message, "Merge")
+		strings.HasPrefix(r.Message, "feature")
+	// Simply merge is way to unspecific
+	// strings.HasPrefix(r.Message, "Merge")
 }
 
 func (r *ConventionalCommitsResolver) isChanged() bool {
@@ -40,7 +41,7 @@ func (r *ConventionalCommitsResolver) isRemoved() bool {
 }
 
 func (r *ConventionalCommitsResolver) isFixed() bool {
-	return strings.HasPrefix(r.Message, "fixed")
+	return strings.HasPrefix(r.Message, "fix")
 }
 
 func (r *ConventionalCommitsResolver) isSecurity() bool {
