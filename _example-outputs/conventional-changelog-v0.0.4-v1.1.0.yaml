@@ -176,3 +176,5 @@
   description: 'refactor(): split code into modules  Expose a better api (especially for from and to) in preparation for conventional-github-release'
 - kind: changed
   description: 'refactor(write-changelog): add error catch to cb'
+- kind: fixed
+  description: 'fix(writeLog): fix require statement for Writer'

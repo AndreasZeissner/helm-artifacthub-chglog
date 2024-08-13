@@ -14,6 +14,7 @@ vars:
 tasks:
   default:
     cmds:
+      - task: .test:fixture:output:clean
       - task: test:e2e
       - task: test:fixture:go-siva
       - task: test:fixture:conventional-changelog
@@ -21,7 +22,16 @@ tasks:
       - task: test:fixture:cosmo:dir:router
       - task: test:fixture:cosmo-ops:helm-cosmo
       - task: test:fixture:cosmo-ops:helm-cosmo-router
+      - task: test:fixture:cosmo-ops:helm-cosmo:auto-resolved
       - task: build
+  .cli:without:from:
+    internal: true
+    cmd: |
+      go run main.go \
+        --to {{ .TO_TAG }} \
+        --repoURL {{ .REPO_URL }} \
+        {{ .PATHS }} \
+        --output {{ .OUTPUT }}
   .cli:
     internal: true
     cmd: |
@@ -68,7 +78,7 @@ tasks:
     cmds:
       - task: .cli
         vars:
-          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/go-siva"
+          REPO_URL: "{{ .PWD }}/fixtures/go-siva"
           FROM_TAG: "v1.0.0"
           TO_TAG: "v1.7.0"
           OUTPUT: "{{ .PWD }}/_example-outputs/go-siva.yaml"
@@ -78,52 +88,66 @@ tasks:
     cmds:
       - task: .cli
         vars:
-          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/conventional-changelog"
-          FROM_TAG: "v1.1.0"
-          TO_TAG: "v0.0.4"
-          OUTPUT: "{{ .PWD }}/_example-outputs/conventional-changelog.yaml"
+          REPO_URL: "{{ .PWD }}/fixtures/conventional-changelog"
+          FROM_TAG: "v0.0.4"
+          TO_TAG: "v1.1.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/conventional-changelog-v0.0.4-v1.1.0.yaml"
   test:fixture:cosmo:
     deps:
       - .test:fixture
     cmds:
       - task: .cli
         vars:
-          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo"
-          FROM_TAG: "router@0.89.2"
-          TO_TAG: "router@0.13.0"
-          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo.yaml"
+          REPO_URL: "{{ .PWD }}/fixtures/cosmo"
+          FROM_TAG: "router@0.13.0"
+          TO_TAG: "router@0.89.2"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-router@0.13.0-router@0.89.2.yaml"
   test:fixture:cosmo-ops:helm-cosmo:
     deps:
       - .test:fixture
     cmds:
       - task: .cli
         vars:
-          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo-ops"
-          FROM_TAG: "helm-cosmo@0.8.9"
-          TO_TAG: "helm-cosmo@0.8.0"
-          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo@0.8.9-helm-cosmo@0.8.0.yaml"
+          REPO_URL: "{{ .PWD }}/fixtures/cosmo-ops"
+          FROM_TAG: "helm-cosmo@0.8.10"
+          TO_TAG: "helm-cosmo@0.9.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo@0.8.10-helm-cosmo@0.9.0.yaml"
+  test:fixture:cosmo-ops:helm-cosmo:auto-resolved:
+    deps:
+      - .test:fixture
+    cmds:
+      - task: .cli:without:from
+        vars:
+          REPO_URL: "{{ .PWD }}/fixtures/cosmo-ops"
+          TO_TAG: "helm-cosmo@0.9.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo-cosmo@0.9.0.yaml"
+          PATHS: "--paths helm/cosmo"
   test:fixture:cosmo-ops:helm-cosmo-router:
     deps:
       - .test:fixture
     cmds:
       - task: .cli
         vars:
-          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo-ops"
-          FROM_TAG: "helm-cosmo-router@0.7.8"
-          TO_TAG: "helm-cosmo-router@0.5.0"
-          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo-router@0.7.8-helm-cosmo-router@0.5.0.yaml"
+          REPO_URL: "{{ .PWD }}/fixtures/cosmo-ops"
+          FROM_TAG: "helm-cosmo-router@0.5.0"
+          TO_TAG: "helm-cosmo-router@0.7.8"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo-router@0.5.0-helm-cosmo-router@0.7.8.yaml"
   test:fixture:cosmo:dir:router:
     deps:
       - .test:fixture
     cmds:
       - task: .cli
         vars:
-          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo"
-          FROM_TAG: "router@0.89.2"
-          TO_TAG: "router@0.13.0"
-          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-router@0.89.2-router@0.13.0.yaml"
-          PATHS: "--paths router"
+          REPO_URL: "{{ .PWD }}/fixtures/cosmo"
+          FROM_TAG: "router@0.13.0"
+          TO_TAG: "router@0.89.2"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-router@0.13.0-router@0.89.2.yaml"
+          PATHS: "--paths router/"
   # test helper
+  .test:fixture:output:clean:
+    internal: true
+    cmds:
+      - rm -rf {{ .PWD }}/_example-outputs/**
   .test:fixture:output:
     internal: true
     cmds:
@@ -133,13 +157,11 @@ tasks:
   .test:e2e:testdata:
     internal: true
     cmds:
-      - mkdir -p {{ .PWD }}/{{ .TESTDATA_DIR }}
-      - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/wundergraph/cosmo.git
-      - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/conventional-changelog || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/conventional-changelog/conventional-changelog.git
-      - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/go-siva || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/src-d/go-siva.git
-      - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo-ops || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/AndreasZeissner/cosmo-ops
-    # sources:
-    #   - '{{ .PWD }}/{{ .TESTDATA_DIR }}/**'
+      - mkdir -p {{ .PWD }}/fixtures
+      - test -d {{ .PWD }}/fixtures/cosmo || git -C {{ .PWD }}/fixtures clone https://github.com/wundergraph/cosmo.git
+      - test -d {{ .PWD }}/fixtures/conventional-changelog || git -C {{ .PWD }}/fixtures clone https://github.com/conventional-changelog/conventional-changelog.git
+      - test -d {{ .PWD }}/fixtures/go-siva || git -C {{ .PWD }}/fixtures clone https://github.com/src-d/go-siva.git
+      - test -d {{ .PWD }}/fixtures/cosmo-ops || git -C {{ .PWD }}/fixtures clone https://github.com/AndreasZeissner/cosmo-ops
   .test:fixture:
     internal: true
     deps:

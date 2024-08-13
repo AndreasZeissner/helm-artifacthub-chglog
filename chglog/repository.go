@@ -41,11 +41,17 @@ func ResolveTag(repo *git.Repository, tag string) (*plumbing.Reference, *object.
 	tagObj, err := repo.TagObject(t.Hash())
 	switch err {
 	case plumbing.ErrObjectNotFound:
+		// lightweight tag
 		c, err = repo.CommitObject(t.Hash())
+
 		if err != nil {
 			log.Fatalf("Failed to get commit object: %v", err)
 		}
 	default:
+		// Handle the case of an annotated tag
+		if err != nil {
+			log.Fatalf("Failed to get tag object: %v", err)
+		}
 		c, err = tagObj.Commit()
 		if err != nil {
 			log.Fatalf("Failed to get commit object from tag: %v", err)

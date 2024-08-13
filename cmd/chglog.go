@@ -10,14 +10,14 @@ func NewChglogCli() *cli.App {
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "from",
-				Value:    "here",
-				Usage:    "tag to start from",
-				Required: true,
+				Value:    "",
+				Usage:    "tag to end with will be to - 1 in not provided",
+				Required: false,
 			},
 			&cli.StringFlag{
 				Name:     "to",
-				Value:    "there",
-				Usage:    "tag to exclude from",
+				Value:    "here",
+				Usage:    "latest tag from which to look back",
 				Required: true,
 			},
 			&cli.StringFlag{

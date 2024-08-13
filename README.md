@@ -25,8 +25,8 @@ You can read further about this here: https://blog.artifacthub.io/blog/changelog
 
 ```
  go run main.go \
-  --to v1.7.0 \
   --from v1.0.0 \
+  --to v1.7.0 \
   --repoURL helm-artifacthub-chglog/fixtures/go-siva \
   --output helm-artifacthub-chglog/_example-outputs/go-siva.yaml
 ```
@@ -35,8 +35,8 @@ Will generate: `helm-artifacthub-chglog/_example-outputs/go-siva.yaml` and use t
 
 ```
  go run main.go \
-  --to router@0.13.0 \
-  --from router@0.89.2 \
+  --from router@0.13.0 \
+  --to router@0.89.2 \
   --repourl helm-artifacthub-chglog/fixtures/cosmo \
   --paths router \
   --output helm-artifacthub-chglog/_example-outputs/cosmo-router@0.89.2-router@0.13.0.yaml

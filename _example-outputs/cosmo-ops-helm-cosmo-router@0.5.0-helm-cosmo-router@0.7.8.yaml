@@ -1,0 +1,106 @@
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: something in the controlplane'
+- kind: fixed
+  description: 'fix: stgh'
+- kind: fixed
+  description: 'fix: add test'
+- kind: fixed
+  description: 'fix: sthg'
+- kind: fixed
+  description: 'fix: not allowed uppercase'
+- kind: fixed
+  description: 'fix: controlplane'
+- kind: fixed
+  description: 'fix: router'
+- kind: fixed
+  description: 'fix: in the helm chart'
+- kind: fixed
+  description: 'fix: stgk'
+- kind: fixed
+  description: 'fix:  make full-demo-up failure (#1064)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: note'
+- kind: fixed
+  description: 'fix: sthg in helm'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: me'
+- kind: fixed
+  description: 'fix: the bas'
+- kind: fixed
+  description: 'fix: Something'
+- kind: fixed
+  description: 'fix: something in the helm charts'
+- kind: fixed
+  description: 'fix: some trigger'
+- kind: fixed
+  description: 'fix: something'
+- kind: fixed
+  description: 'fix: sthg'
+- kind: fixed
+  description: 'fix: something'
+- kind: fixed
+  description: 'fix: something'
+- kind: fixed
+  description: 'fix: foo'
+- kind: fixed
+  description: 'fix: another feature'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: pull-requests'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'

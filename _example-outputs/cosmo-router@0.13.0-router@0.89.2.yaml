@@ -59,8 +59,6 @@
 - kind: added
   description: 'feat: support edfs subscription stream/consumer; multiple subjects (#685)'
 - kind: fixed
-  description: 'fix: provide default subscription protocol for composition-go (#702)'
-- kind: fixed
   description: 'fix: remove unused host-cpu metric (#703)'
 - kind: fixed
   description: 'fix: create individual metrics per error code (#693)'
@@ -86,8 +84,6 @@
   description: 'fix(router): decode empty array of Regex in config (#613)'
 - kind: added
   description: 'feat: improve planning time of a big queries (#609)'
-- kind: fixed
-  description: 'fix: improve integration tests (#608)'
 - kind: fixed
   description: 'fix: don''t log unexpected EOF client issues as errors (#606)'
 - kind: fixed
@@ -267,8 +263,6 @@
 - kind: fixed
   description: 'fix: don''t cancel metric collection on request cancellation (#221)'
 - kind: added
-  description: "feat: add support for router config generation to composition-go (#218)  Extend composition-go with a new BuildRouterConfiguration() function. This allows us to use composition-go\r during integration tests instead of calling out to wgc via the command line. Update README to include instructions\r on how to keep the generated files within the library up to date."
-- kind: added
   description: 'feat: allow to exclude certain OTEL metrics and labels from prometheus export (#209)'
 - kind: added
   description: 'feat: add support for authentication via JWKS (#200)'
@@ -352,3 +346,13 @@
   description: 'feat: webhooks (#66)'
 - kind: added
   description: 'feat: add user registration (#57)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: remove federation fields from renamed root types (#304)'
+- kind: added
+  description: 'feat: bundle custom graphiql in router (#308)'
+- kind: added
+  description: 'feat: accept custom operation IDs for persisted operations (#302)'
+- kind: added
+  description: 'feat: add variables validation (#309)'
+- kind: fixed
+  description: 'fix: invite flow rework (#303)'
