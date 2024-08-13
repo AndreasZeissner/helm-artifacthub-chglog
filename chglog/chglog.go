@@ -1,6 +1,7 @@
 package chglog
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -28,25 +29,121 @@ func filterSubirs(directories []string) func(string) bool {
 		return ok
 	}
 }
+
+func extractTagPrefix(tag string) string {
+	if idx := strings.Index(tag, "@"); idx != -1 {
+		return tag[:idx]
+	}
+	return tag // If no "@" is found, return the whole tag (assuming no version in the tag)
+}
+
+func findPreviousTaggedCommit(repo *git.Repository, options *git.LogOptions, tagPrefix string) (*object.Commit, string, error) {
+	// Get an iterator for the log starting from the given commit
+	iter, err := repo.Log(options)
+	if err != nil {
+		return nil, "", err
+	}
+	defer iter.Close()
+
+	var foundCommit *object.Commit
+	var foundTag string
+	skipFirstCommit := true
+
+	// Iterate through the commits
+	for {
+		commit, err := iter.Next()
+		if err != nil {
+			if err == plumbing.ErrObjectNotFound {
+				break
+			}
+			return nil, "", err
+		}
+
+		// Skip the first commit (which is the toCommit itself)
+		if skipFirstCommit {
+			skipFirstCommit = false
+			continue
+		}
+
+		// Check if this commit has a tag directly associated with it
+		tags, err := repo.Tags()
+		if err != nil {
+			return nil, "", err
+		}
+
+		err = tags.ForEach(func(ref *plumbing.Reference) error {
+			// Ensure the tag name has the correct prefix
+			currentTag := ref.Name().Short()
+			currentTagPrefix := extractTagPrefix(currentTag)
+
+			if currentTagPrefix != tagPrefix {
+				return nil
+			}
+
+			tag, err := repo.TagObject(ref.Hash())
+			if err != nil && err != plumbing.ErrObjectNotFound {
+				return err
+			}
+
+			var target plumbing.Hash
+			if err == plumbing.ErrObjectNotFound {
+				target = ref.Hash()
+			} else {
+				target = tag.Target
+			}
+
+			if target == commit.Hash {
+				foundCommit = commit
+				foundTag = ref.Name().Short()
+				return fmt.Errorf(StopIteration)
+			}
+			return nil
+		})
+
+		if err != nil && err.Error() == StopIteration {
+			break
+		} else if err != nil {
+			return nil, "", err
+		}
+	}
+
+	if foundCommit == nil {
+		return nil, "", fmt.Errorf("no previous tag with prefix '%s' found", tagPrefix)
+	}
+
+	return foundCommit, foundTag, nil
+}
+
 func GenerateChangelogForRepo(from, to, repoURL string, subdirectories []string) []*ArtifactHubChangelogObject {
 	chglogs := []*ArtifactHubChangelogObject{}
 	repo := OpenRepo(repoURL)
+	var fromCommit *object.Commit
 
-	_, fromCommit := ResolveTag(repo, from)
 	_, toCommit := ResolveTag(repo, to)
 
 	options := &git.LogOptions{
 		From: toCommit.Hash,
-		All:  false,
 	}
 
 	if len(subdirectories) > 0 {
 		options = &git.LogOptions{
 			From:       toCommit.Hash,
-			All:        false,
 			PathFilter: filterSubirs(subdirectories),
 		}
 	}
+
+	if from == "" {
+		tagPrefix := extractTagPrefix(to)
+		c, _, err := findPreviousTaggedCommit(repo, options, tagPrefix)
+		if err != nil {
+			log.Fatalf("Failed resolving latest commit: %v", err)
+		}
+		fromCommit = c
+	} else {
+		_, c := ResolveTag(repo, from)
+		fromCommit = c
+	}
+
 	// Initialize a map to store commits reachable from the fromCommit
 	visited := make(map[plumbing.Hash]bool)
 

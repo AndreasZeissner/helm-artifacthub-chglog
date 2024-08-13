@@ -22,7 +22,16 @@ tasks:
       - task: test:fixture:cosmo:dir:router
       - task: test:fixture:cosmo-ops:helm-cosmo
       - task: test:fixture:cosmo-ops:helm-cosmo-router
+      - task: test:fixture:cosmo-ops:helm-cosmo:auto-resolved
       - task: build
+  .cli:without:from:
+    internal: true
+    cmd: |
+      go run main.go \
+        --to {{ .TO_TAG }} \
+        --repoURL {{ .REPO_URL }} \
+        {{ .PATHS }} \
+        --output {{ .OUTPUT }}
   .cli:
     internal: true
     cmd: |
@@ -103,6 +112,16 @@ tasks:
           FROM_TAG: "helm-cosmo@0.8.10"
           TO_TAG: "helm-cosmo@0.9.0"
           OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo@0.8.10-helm-cosmo@0.9.0.yaml"
+  test:fixture:cosmo-ops:helm-cosmo:auto-resolved:
+    deps:
+      - .test:fixture
+    cmds:
+      - task: .cli:without:from
+        vars:
+          REPO_URL: "{{ .PWD }}/fixtures/cosmo-ops"
+          TO_TAG: "helm-cosmo@0.9.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo-cosmo@0.9.0.yaml"
+          PATHS: "--paths helm/cosmo"
   test:fixture:cosmo-ops:helm-cosmo-router:
     deps:
       - .test:fixture
