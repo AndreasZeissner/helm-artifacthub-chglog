@@ -1,0 +1,16 @@
+- kind: removed
+  description: 'removed: kafka'
+- kind: changed
+  description: 'perf: remove usused seed call'
+- kind: changed
+  description: 'deps: update helm chart deps'
+- kind: changed
+  description: 'refactor: helm test'
+- kind: security
+  description: 'security: this changes some version to address fix x.y.z'
+- kind: added
+  description: 'feat: added some new cool feature'
+- kind: fixed
+  description: 'fix: test'
+- kind: fixed
+  description: 'fix: test'

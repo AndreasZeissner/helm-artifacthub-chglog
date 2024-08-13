@@ -1,2 +1,8 @@
 - kind: fixed
-  description: fix typo in file name.
+  description: "fix tests build (#35)  * fix tests build\r \r Code was broken after merging #30 and #31 together.\r \r Signed-off-by: Santiago M. Mola <santi@mola.io>\r \r * fix paths on Windows, ensure closing\r \r Signed-off-by: Santiago M. Mola <santi@mola.io>\r \r * travis: update go versions\r \r Signed-off-by: Santiago M. Mola <santi@mola.io>"
+- kind: fixed
+  description: fix README for new GitHub rendering system
+- kind: fixed
+  description: fix typos
+- kind: security
+  description: 'add fix for zip slip siva vulnerability  * document `IndexEntry.Name`, including security notes. * `siva unpack` now fails if it would result in a file being extracted outside the output directory. * `Index.ToSafePaths` convenience function is provided for users who write siva extraction code and want a quick way to make it safe.  Thanks to Toni Cárdenas (@tcard) for notifying us about the vulnerability and proposing a fixed.  Signed-off-by: Santiago M. Mola <santi@mola.io>'
