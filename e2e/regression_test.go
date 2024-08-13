@@ -6,41 +6,42 @@ import (
 	"github.com/AndreasZeissner/helm-artifacthub-chglog/chglog"
 )
 
+type testCase struct {
+	repoURL        string
+	from           string
+	to             string
+	len            int
+	subdirectories []string
+}
+
 func TestGeneratingSimpleArtifactChangelog(t *testing.T) {
-	var testCase = []struct {
-		repoURL        string
-		res            bool
-		from           string
-		to             string
-		len            int
-		subdirectories []string
-	}{
+	var testCase = []testCase{
 		{
 			repoURL:        "../fixtures/go-siva",
 			from:           "v1.0.0",
 			to:             "v1.7.0",
-			len:            3,
+			len:            1,
 			subdirectories: []string{},
 		},
 		{
 			repoURL:        "../fixtures/conventional-changelog",
 			from:           "v1.1.0",
 			to:             "v0.0.4",
-			len:            52,
+			len:            89,
 			subdirectories: []string{},
 		},
 		{
 			repoURL:        "../fixtures/cosmo",
 			from:           "router@0.89.2",
 			to:             "router@0.13.0",
-			len:            214,
+			len:            525,
 			subdirectories: []string{},
 		},
 		{
 			repoURL:        "../fixtures/cosmo",
 			from:           "router@0.89.2",
 			to:             "router@0.13.0",
-			len:            104,
+			len:            177,
 			subdirectories: []string{"router"},
 		},
 	}

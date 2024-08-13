@@ -1,0 +1,16 @@
+- kind: fixed
+  description: 'fix: something in the controlplane'
+- kind: fixed
+  description: 'fix: stgh'
+- kind: fixed
+  description: 'fix: add test'
+- kind: fixed
+  description: 'fix: sthg'
+- kind: fixed
+  description: 'fix: not allowed uppercase'
+- kind: fixed
+  description: 'fix: controlplane'
+- kind: fixed
+  description: 'fix: router'
+- kind: fixed
+  description: 'fix: in the helm chart'

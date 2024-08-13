@@ -1,3 +1,19 @@
+- kind: fixed
+  description: 'fix: unset admission webhook using empty string (#820)'
+- kind: fixed
+  description: 'fix: remove unused attributes (#819)'
+- kind: fixed
+  description: 'fix: fix default value for `extraEnvVars` in values for `router` (#818)'
+- kind: fixed
+  description: 'fix: set response properly as JSON data (#817)'
+- kind: fixed
+  description: 'fix: graph visualization toggle (#816)'
+- kind: fixed
+  description: 'fix: level of null data propagation (#812)'
+- kind: fixed
+  description: 'fix: playground config, subgraphs and members table, graph visualization (#809)'
+- kind: fixed
+  description: 'fix: set expiry for the jwt (#811)'
 - kind: added
   description: 'feat: improve operation parsing (#810)'
 - kind: added
@@ -6,116 +22,328 @@
   description: 'feat: add support for websocket subprotocol (#776)'
 - kind: added
   description: 'feat: implement upgrade request allow list to forward headers and query params to the engine (#748)'
+- kind: fixed
+  description: 'fix: add tests and implement graphql over http cases (#806)'
+- kind: fixed
+  description: 'fix: playground theme settings (#805)'
+- kind: fixed
+  description: 'fix: token create prints special character (#801)'
+- kind: fixed
+  description: 'fix: improve apollo compatibilty mode (#802)'
+- kind: fixed
+  description: 'fix: auth check for contract commands (#800)'
+- kind: fixed
+  description: 'fix: graph select ui (#799)'
+- kind: fixed
+  description: 'fix: parser errors during linting (#797)'
+- kind: fixed
+  description: 'fix: improve federated-graph fetch command (#786)'
 - kind: added
   description: 'feat: schema contracts (#751)'
+- kind: fixed
+  description: 'fix: enable remove unused variables normalization rule (#790)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: usage of fragments on root query type, fix normalization issues (#789)'
 - kind: added
   description: 'feat: refactor edfs and add kafka support (#770)  Co-authored-by: Aenimus <daviditstutt@gmail.com>'
+- kind: fixed
+  description: 'fix: schema and sdl page improvements and flickers (#788)'
 - kind: added
   description: 'feat: deploy router on gcp cloud run (#775)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: fix the expansion of selectors in the istio-gateway template for the router helm chart (#785)'
 - kind: added
   description: 'feat: add istioGateway and VirtualService to router helm chart (#773)'
+- kind: fixed
+  description: 'fix: root level @requires planning (#779)'
+- kind: fixed
+  description: 'fix: write access for operation overrides (#777)'
+- kind: fixed
+  description: "fix: ignore unknown router execution config fields (#767)  Co-authored-by: starptech <deusdustin@gmail.com>\r Co-authored-by: spetrunin <neyasut@gmail.com>"
 - kind: added
   description: 'feat: support inaccessible and add foundation for contracts (#764)'
+- kind: fixed
+  description: 'fix: validate graphql operation in playground (#763)'
+- kind: fixed
+  description: 'fix: verify the user from keycloak and sanitize emails (#762)'
+- kind: fixed
+  description: 'fix: add fetch-schema command to replace the old functionality of the fetch cmd (#760)'
+- kind: fixed
+  description: 'fix: normalization of non-compatible nested fragment types (#761)'
+- kind: fixed
+  description: 'fix: scim server issues (#754)'
+- kind: fixed
+  description: 'fix: don''t transmit persistedQuery extension to subgraphs (#759)'
+- kind: fixed
+  description: 'fix: field selection validation (#758)'
+- kind: fixed
+  description: 'fix: set default ws subscription subprotocol (#757)'
 - kind: added
   description: 'feat: add apollo compatibility mode in wgc federated-graph fetch command (#742)'
 - kind: added
   description: 'feat: log subgraph errors (#753)'
 - kind: added
   description: 'feat: improve Subgraph error propagation (#752)'
+- kind: fixed
+  description: 'fix: upgrade deps to cover CVEs (#750)'
+- kind: fixed
+  description: 'fix: graphql error serialization (#747)'
+- kind: fixed
+  description: 'fix: ignore user agent for subscription deduplication (#745)'
 - kind: added
   description: 'feat: allow to rename client headers on propagate to subgraphs (#674)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: subscriptions resolver race (#739)'
+- kind: fixed
+  description: 'fix: retry on 500 origin errors (#736)'
+- kind: fixed
+  description: 'fix(trace): improve error tracking (#734)'
+- kind: fixed
+  description: 'fix: make sure an api key with no resources can not be created (#728)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: organization with access to features should be able to enable them on their own (#730)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: inform users if there is nothing new to publish (#710)'
+- kind: fixed
+  description: 'fix: analytics group filter omission (#729)'
 - kind: added
   description: 'feat: upgrade otelcollector to 0.98.0 (#727)'
+- kind: fixed
+  description: 'fix: let everybody create orgs (#709)'
 - kind: added
   description: 'feat: support entity targets (implicit keys) (#724)'
 - kind: added
   description: 'feat: enable raw introspection for subgraphs (#721)'
+- kind: fixed
+  description: 'fix: read / set cookie values as strings (#720)'
+- kind: fixed
+  description: 'fix: url overflow in federated graph card (#719)'
+- kind: fixed
+  description: 'fix: validate whether webhook exists (#718)'
 - kind: added
   description: 'feat: support Redis connection strings in router (#697)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: authenticate organization id before updating webhooks (#713)'
+- kind: fixed
+  description: 'fix: update wgc commands ./helm (#712)'
 - kind: added
   description: 'feat: support edfs subscription stream/consumer; multiple subjects (#685)'
+- kind: fixed
+  description: 'fix: everyone with write access can create api keys (#711)'
 - kind: added
   description: 'feat: support TLS in organization seed (#707)'
+- kind: fixed
+  description: 'fix: align tables make them entire clickable (#696)'
+- kind: fixed
+  description: 'fix: provide default subscription protocol for composition-go (#702)'
+- kind: fixed
+  description: 'fix: remove unused host-cpu metric (#703)'
+- kind: fixed
+  description: 'fix: pass database certs when seeding (#699)'
+- kind: fixed
+  description: 'fix: stringify org cookie before comparison (#698)'
+- kind: fixed
+  description: 'fix: create individual metrics per error code (#693)'
+- kind: fixed
+  description: 'fix: create database clickhouse, arm incompatibilities'
+- kind: fixed
+  description: 'fix: don''t enforce org slug when using API key (#688)'
+- kind: fixed
+  description: 'fix: remove namespace from local storage (#687)'
 - kind: added
   description: 'feat: use offline token, refresh token implementation (#686)'
 - kind: added
   description: 'feat: implement scim server (#664)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: subgraph error handling and instrumentation (#675)'
+- kind: fixed
+  description: 'fix: use printSchemaWithDirectives instead of printSchema (#676)'
+- kind: fixed
+  description: 'fix: improve error handling in the migrator (#673)'
+- kind: fixed
+  description: 'fix: make the downloaded file name the same as the target name (#672)'
+- kind: fixed
+  description: 'fix: webhook and slack retrieving incorrect graph list (#671)'
+- kind: fixed
+  description: 'fix: conflicting subgraph name on monograph creation (#668)'
 - kind: added
   description: 'feat: add initial payload on WS origin connections (#667)'
 - kind: added
   description: 'feat: multi platform docker builds (#665)'
 - kind: added
   description: 'feat: release helm charts (#663)'
+- kind: fixed
+  description: 'fix: show all subgraphs in organization subgraph list (#659)'
+- kind: fixed
+  description: 'fix: if root type is renamed, also rename all references (#661)'
+- kind: fixed
+  description: 'fix: missing navbar in playground and settings page refresh (#660)'
 - kind: added
   description: "feat: support authentication and multiple sources for nats edfs (#635)  Co-authored-by: spetrunin <neyasut@gmail.com>\r Co-authored-by: Sergiy <818351+devsergiy@users.noreply.github.com>"
+- kind: fixed
+  description: 'fix: github check api crashes schema check (#658)'
+- kind: fixed
+  description: 'fix(cdn): shutdown gracefully (#657)'
+- kind: fixed
+  description: 'fix: remove connect-src CSP policy (#656)'
+- kind: fixed
+  description: 'fix: proto fields (#655)'
 - kind: added
   description: 'feat: show warning when both auth methods are used (#654)'
 - kind: added
   description: 'feat: monograph support (#623)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat(infrastructure): terraform module for deploying the Cosmo Router on AWS Fargate (#607)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: soften CSP on playground page (#653)'
 - kind: added
   description: 'feat: allow exposing upgrade errors (#647)'
+- kind: fixed
+  description: 'fix: change ''scopes'' keyword to ''scope'' (#646)'
 - kind: added
   description: 'feat: allow to update admission url (#638)'
+- kind: fixed
+  description: 'fix: graph overview ui visuals (#633)'
+- kind: fixed
+  description: 'fix: raw output not being a valid json (#642)'
+- kind: fixed
+  description: 'fix: load monaco from public folder (#641)'
+- kind: fixed
+  description: 'fix: csp header'
 - kind: added
   description: 'feat: configure CSP for studio (#639)'
+- kind: fixed
+  description: 'fix: cookie race (#636)'
+- kind: fixed
+  description: 'fix: improve ui and logs (#631)'
 - kind: added
   description: 'feat: improve admission controller (#632)'
+- kind: fixed
+  description: 'fix: change claim key to support microsoft entra (#630)'
 - kind: added
   description: 'feat: router config signature validation through custom admission webhooks (#628)'
 - kind: added
   description: 'feat: allow blocking mutations, subscriptions, non-persisted operations via router config (#627)'
 - kind: added
   description: 'feat: add edfs validation; add event source name keys to config (#624)'
+- kind: fixed
+  description: 'fix: dependencies (#622)'
+- kind: fixed
+  description: 'fix: subgraphs not found in composition details page (#619)'
 - kind: added
   description: 'feat: add configurable schema linting (#596)'
+- kind: fixed
+  description: 'fix(router): decode empty array of Regex in config (#613)'
 - kind: added
   description: 'feat: improve planning time of a big queries (#609)'
+- kind: fixed
+  description: 'fix: handle empty files in the cli itself (#593)'
 - kind: added
   description: 'feat: ensure TLS and test if mail client is ready (#611)'
+- kind: fixed
+  description: 'fix: improve integration tests (#608)'
+- kind: fixed
+  description: 'fix: don''t log unexpected EOF client issues as errors (#606)'
+- kind: fixed
+  description: 'fix: subscription deduplication (#603)'
 - kind: added
   description: 'feat: tls and mTLS server support (#600)'
+- kind: fixed
+  description: 'fix: missing ART visuals on subgraph errors (#598)'
+- kind: fixed
+  description: 'fix: maintain consistent links (#594)'
 - kind: added
   description: 'feat: unify OTEL tracing and ART (#588)'
+- kind: fixed
+  description: 'fix: title layout ui (#586)'
+- kind: fixed
+  description: 'fix: custom scrollbar in ui and playground (#587)'
 - kind: added
   description: 'feat: enrich logger for platform calls (#579)'
 - kind: added
   description: 'feat(cli): new command to fetch latest published subgraph SDL (#575)  Co-authored-by: Patrick Klein <p.klein@gastromatic.de>'
+- kind: fixed
+  description: 'fix: omit invalid group filters (#580)'
 - kind: added
   description: 'feat: default vars for run query in trace page (#577)'
+- kind: fixed
+  description: 'fix: ui improvements (#576)'
 - kind: added
   description: 'feat: show link to studio page on subgraph check (#578)'
+- kind: fixed
+  description: 'fix: info.ftl keycloak template (#565)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: invitations bug (#570)'
+- kind: fixed
+  description: 'fix(cli): ensure to exit with 1 in error cases (#568)'
 - kind: added
   description: 'feat: add option to redact IP in traces and logs (#561)'
 - kind: added
   description: 'feat: version update check (#562)'
 - kind: added
   description: 'feat: handle exceptions gracefully (#563)'
+- kind: fixed
+  description: 'fix: regression composition of external directive applied to key fields (#560)'
+- kind: fixed
+  description: 'fix: view button in subgraph table (#559)'
 - kind: added
   description: 'feat: implement slider for analytics duration (#539)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: support empty labels and label matchers (#555)'
+- kind: fixed
+  description: 'fix: link to changelog in slack update (#557)'
+- kind: fixed
+  description: 'fix: send only summary for large slack notifications (#556)'
+- kind: fixed
+  description: 'fix: improve navigation (#554)'
 - kind: added
   description: 'feat: generate variables when we copy a persisted operation (#552)'
+- kind: fixed
+  description: 'fix: listen port in config (#553)'
+- kind: fixed
+  description: 'fix: router listen address default port (#551)'
+- kind: fixed
+  description: 'fix: don''t expose token on wgc list command (#550)'
 - kind: added
   description: 'feat: upgrade to latest gpt3.5 model (#549)'
 - kind: added
   description: 'feat(metrics): collect OS type and enrich traces with resource instan… (#546)'
 - kind: added
   description: 'feat: recommend GOMEMLIMIT and remove memory limiter (#548)'
+- kind: fixed
+  description: 'fix: remove duplicated columns (#547)'
 - kind: added
   description: 'feat: use json schema to validate and document router config (#545)'
 - kind: added
   description: 'feat: add support for absinthe WebSocket protocol (#541)  Co-authored-by: Sven <sven.widen@gmail.com>'
+- kind: fixed
+  description: 'fix: import (#544)'
 - kind: added
   description: 'feat: operation check overrides (#516)'
+- kind: fixed
+  description: 'fix: disable variable export by default (#536)  Co-authored-by: Jens Neuse <jens.neuse@gmx.de>'
+- kind: fixed
+  description: 'fix: show loader on routers page (#533)'
+- kind: fixed
+  description: 'fix: label matcher validation (#529)'
+- kind: fixed
+  description: 'fix: show subgraphs in the graph view after the creation itself (#514)'
+- kind: fixed
+  description: 'fix: check for config version id when fetching router composition (#525)'
+- kind: fixed
+  description: 'fix: don''t panic when config is nil (#524)'
+- kind: fixed
+  description: 'fix: link to composition from routers page (#522)'
+- kind: fixed
+  description: 'fix: distinguish between server and process uptime, fix uptime ch query (#520)  Co-authored-by: Jens Neuse <jens.neuse@gmx.de>'
 - kind: added
   description: 'feat: router fleet management (#515)'
 - kind: added
   description: 'feat: implement graphql over sse (#519)'
+- kind: fixed
+  description: 'fix(helm): optional secret creation (#518)  Signed-off-by: Alejandro Belleza <belleza.alejandro@gmail.com>'
+- kind: fixed
+  description: 'fix: update subscription protocol (#517)'
 - kind: added
   description: 'feat(helm): support existing secrets (#512)'
 - kind: added
@@ -124,36 +352,92 @@
   description: 'feat(helm): allow to pass custom env to containers (#513)'
 - kind: added
   description: 'feat(helm): allow to specify router config inline (#511)'
+- kind: fixed
+  description: 'fix: prepend ch queries correctly with database name (#508)'
+- kind: fixed
+  description: 'fix: rpm calculation in the graph overview page (#507)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: slack update (#510)'
+- kind: fixed
+  description: 'fix: wait until db is closed in close server hook (#502)'
+- kind: fixed
+  description: 'fix: improve full-demo-up command (#500)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: upgrade to active lts node images (#501)'
 - kind: added
   description: 'feat: improve federated graph lists overview (#497)'
+- kind: fixed
+  description: 'fix: audit log for subgraph member addition and removal (#498)'
 - kind: changed
   description: 'refactor(traces): improve root span instrumentation (#496)'
 - kind: added
   description: 'feat: enable creating orgs without billing (#491)'
+- kind: fixed
+  description: 'fix(traces): avoid filter on service name when determining root'
 - kind: added
   description: 'feat: consider only router root spans in the trace list (#495)'
 - kind: added
   description: 'feat: add pagination component and validate limit (#493)'
+- kind: fixed
+  description: 'fix: view usage button style alignment (#494)'
 - kind: added
   description: 'feat: allow to force root span on the router (#486)'
 - kind: added
   description: 'feat: add authorization directive support for interfaces and interfac… (#492)'
+- kind: fixed
+  description: 'fix: update password and verify email keycloak templates (#487)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: link to graphql variables docs'
+- kind: fixed
+  description: 'fix: refactor router trace instrumentation (#485)'
+- kind: fixed
+  description: 'fix: load schema from CP and sync router playground (#489)'
+- kind: fixed
+  description: 'fix: missing namespace for platform operations (#490)'
 - kind: added
   description: 'feat: show span error and allow filter by span status code and trace id (#484)'
+- kind: fixed
+  description: 'fix: edge case where @external impacted field shareability checks (#483)'
+- kind: fixed
+  description: 'fix: cli tables ui (#482)'
+- kind: fixed
+  description: 'fix(helm): support tls when migrate'
+- kind: fixed
+  description: 'fix: support tls when migrate (#479)'
+- kind: fixed
+  description: 'fix: slack notification link (#478)'
+- kind: fixed
+  description: 'fix: upgrade otel collector (#475)'
 - kind: added
   description: 'feat: integrate S3 when executing "getLatestValidRouterConfig" from the CLI (#467)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix(deps): upgrade bullmq (#471)'
+- kind: fixed
+  description: 'fix: support openai api key in helm chart'
 - kind: added
   description: 'feat: cosmo ai, generate docs on publish (#466)'
+- kind: fixed
+  description: 'fix: validate routing urls (#470)'
 - kind: added
   description: 'feat: make execution plan cache & resolve concurrency configurable (#469)'
+- kind: fixed
+  description: 'fix: ch migrations (#468)'
 - kind: added
   description: 'feat: subgraph analytics page (#455)'
 - kind: added
   description: 'feat: implement authorization directives (#448)  Co-authored-by: Jens Neuse <jens@wundergraph.com>'
+- kind: fixed
+  description: 'fix:  namespace selector list on org change (#465)'
 - kind: added
   description: 'feat: add federated graph id to attributes (#464)'
+- kind: fixed
+  description: 'fix: use graph id from token (#463)'
+- kind: fixed
+  description: 'fix: broken links and ui overflows (#462)'
+- kind: fixed
+  description: 'fix: allow to create subgraph and federated graphs with same name (#461)'
+- kind: fixed
+  description: 'fix: remove typo in move option (#459)'
 - kind: added
   description: 'feat: namespaces (#447)'
 - kind: added
@@ -166,32 +450,94 @@
   description: 'feat(router): aws lambda support (#446)  Co-authored-by: Suvij Surya <suvijsurya76@gmail.com>'
 - kind: added
   description: 'feat: implement key resolvable false and implicit entities (#445)'
+- kind: fixed
+  description: 'fix: refresh button in the overview page (#441)'
 - kind: changed
   description: 'refactor: improve router config serving cdn (#440)'
+- kind: fixed
+  description: 'fix: organization_invitation.deleted event and set auditableType (#439)'
+- kind: fixed
+  description: 'fix: navigation from invitations page (#434)'
+- kind: fixed
+  description: 'fix: allow the member of the org to leave (#436)'
+- kind: fixed
+  description: 'fix: date and range filter for traces (#437)'
+- kind: fixed
+  description: 'fix: allow to start router without graph token but static config (#433)'
+- kind: fixed
+  description: 'fix: remove smtp username (#429)'
+- kind: fixed
+  description: 'fix: poller interface for Windows'
+- kind: fixed
+  description: 'fix: skip healthchecks requests for tracing (#431)'
+- kind: fixed
+  description: 'fix: empty screen audit logs (#430)'
 - kind: added
   description: 'feat: audit logs (#424)'
 - kind: added
   description: 'feat: improve subscriptions (#425)  Co-authored-by: StarpTech <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: schema performance, composition crash and minor ui (#426)'
+- kind: fixed
+  description: 'fix: revert start of day on date picker (#423)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: disable epoll for windows to avoid CGO (#421)'
 - kind: added
   description: 'feat: support custom trace propagation (#420)'
+- kind: fixed
+  description: 'fix: apollo migration (#419)'
+- kind: fixed
+  description: 'fix: delete organization (#418)'
+- kind: fixed
+  description: 'fix: pass context for r2 (#416)'
+- kind: fixed
+  description: 'fix(cdn): return 404 when config does not exist (#415)'
 - kind: added
   description: 'feat: provide router config over cdn (#411)  Co-authored-by: StarpTech <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: section for deprecated fields (#414)'
+- kind: fixed
+  description: 'fix: update organization details (#413)'
 - kind: added
   description: 'feat: refactor ws impl and add test framework (#406)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: keycloak templates (#403)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: discussion link and defaults (#412)'
 - kind: added
   description: 'feat: add support of interface objects (#407)'
+- kind: fixed
+  description: 'fix: invite user (#410)'
+- kind: fixed
+  description: 'fix: discussion improvements (#408)'
 - kind: added
   description: 'feat: discussions (#394)'
 - kind: added
   description: 'feat: track subgraphs in metrics (#405)'
+- kind: fixed
+  description: 'fix: api keys creation when rbac is off (#404)'
+- kind: fixed
+  description: 'fix: conflict on orgID, use org slug as customer name'
+- kind: fixed
+  description: 'fix: reset plan after subscription del, bill for upgrade immediately'
+- kind: fixed
+  description: 'fix(payment): handle customer deletion, cancel subs when org is deleted (#401)'
+- kind: fixed
+  description: 'fix: scope plan update to organization'
+- kind: fixed
+  description: 'fix: create keycloak groups when creating organization (#400)'
 - kind: changed
   description: 'refactor(payment): remove unused param, improve types (#398)'
 - kind: added
   description: 'feat: remove deprecated columns (#397)'
+- kind: fixed
+  description: 'fix: avoid -1 in limits, ensure always limits (#396)'
+- kind: fixed
+  description: 'fix: make description optionally (#395)'
 - kind: added
   description: 'feat: billing and limit refactoring (#371)  Co-authored-by: StarpTech <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: handle shutdown gracefully (#393)  Co-authored-by: Sven <sven.widen@gmail.com>'
 - kind: added
   description: 'feat: add readme for subgraphs and federated graphs (#384)'
 - kind: added
@@ -202,106 +548,250 @@
   description: "feat: add NATS to the router (#333)  Co-authored-by: Aenimus <daviditstutt@gmail.com>\r Co-authored-by: Aenimus <47415099+Aenimus@users.noreply.github.com>"
 - kind: added
   description: 'feat: improve subgraph error handling (#382)'
+- kind: fixed
+  description: 'fix: ui (#379)'
+- kind: fixed
+  description: 'fix: playground icon and introspect on focus (#380)'
+- kind: fixed
+  description: 'fix: shutdown prom server on exit (#378)'
+- kind: fixed
+  description: 'fix: po demo, await po upload (#377)'
+- kind: fixed
+  description: 'fix: alignment of URL button in trace tree view (#376)'
 - kind: added
   description: 'feat: add singleflight to transport (#372)'
 - kind: added
   description: 'feat: implement warnings foundation (#373)'
 - kind: added
   description: 'feat: add git commit sha to checks (#361)'
+- kind: fixed
+  description: 'fix: changelog page (#369)'
+- kind: fixed
+  description: 'fix: accept specifiedBy directive (#367)'
+- kind: fixed
+  description: 'fix: minor ui fixes (#366)'
 - kind: added
   description: 'feat: improve router helm chart (#365)'
+- kind: fixed
+  description: 'fix: if a type has already been overridden, add the new field names t… (#363)'
+- kind: fixed
+  description: 'fix: return error if override source and target are equivalent (#362)'
 - kind: added
   description: 'feat: implement foundations for entity interfaces (#359)'
+- kind: fixed
+  description: 'fix: update link to docs for graph access control (#358)'
+- kind: fixed
+  description: 'fix: allow to host graphql playground and handler on the same path (#354)'
 - kind: added
   description: 'feat: remember and redirect to last used organisation (#357)  Co-authored-by: Aenimus <47415099+Aenimus@users.noreply.github.com>'
+- kind: fixed
+  description: 'fix: api key resource deletion on delete of target (#355)'
 - kind: added
   description: 'feat: add rbac for subgraphs and federated graphs (#351)'
 - kind: changed
   description: 'refactor: make the main HTTP router not dependent on the active GraphQL server (#347)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: changed
   description: 'refactor: improve code structure in graphqlmetrics service, allow api-key override in cli (#348)'
+- kind: fixed
+  description: "fix: race condition due to premature buffer reuse (#350)  When parsing the operation we were sending the buffer back to the reuse\r pool while the operation had not yet been parsed, corrupting some of\r the operations. Add also an integration test to prevent regressions."
+- kind: fixed
+  description: "fix: provide more specific error messages when operation planning fails (#349)  Instead of returning a generic message via HTTP/ws, use the error report\r as returned by the engine."
 - kind: added
   description: 'feat: add ability to pass a custom health checker (#346)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: extend graphqlmetrics chart (#344)'
+- kind: fixed
+  description: 'fix: do not require login for download-binary (#342)'
 - kind: added
   description: 'feat: implement wgc router download-binary (#339)'
+- kind: fixed
+  description: 'fix: star banner on big screens (#338)'
+- kind: fixed
+  description: 'fix: minor ui fixes (#337)'
+- kind: fixed
+  description: 'fix: filter out invalid filters (#336)'
+- kind: fixed
+  description: 'fix: ui fixes (#335)'
 - kind: added
   description: 'feat: add compositions page (#325)'
 - kind: added
   description: 'feat: add github star banner (#334)'
+- kind: fixed
+  description: 'fix: invitations (#326)'
+- kind: fixed
+  description: 'fix: check equality of InputMetrics when aggregating same metrics (#331)'
+- kind: fixed
+  description: 'fix: use graph routing url in snippets (#330)'
 - kind: changed
   description: 'refactor: use ristretto for the CDN in-memory cache (#329)'
 - kind: added
   description: 'feat: persist ops from playground and view all client ops (#323)  Co-authored-by: Alberto García Hierro <alberto@garciahierro.com>'
 - kind: added
   description: 'feat: improve support for extensions and initial payloads (#324)  Co-authored-by: Jens Neuse <jens.neuse@gmx.de>'
+- kind: fixed
+  description: 'fix: minor bug fixes in ui (#328)'
 - kind: added
   description: 'feat: restructure navigation (#280)'
+- kind: fixed
+  description: 'fix: image releases'
+- kind: fixed
+  description: 'fix: change cdn-server package name'
+- kind: fixed
+  description: 'fix: change cdn-server to cdn'
+- kind: fixed
+  description: 'fix: correct warning about supported router version'
+- kind: fixed
+  description: 'fix: add X-WG-TOKEN optionally'
+- kind: fixed
+  description: 'fix: remove jwt payload from request token'
 - kind: added
   description: 'feat: register router on the controlplane (#318)'
 - kind: added
   description: 'feat: add helm chart for CDN (#307)'
+- kind: fixed
+  description: 'fix: undo usage for enum values (#322)'
 - kind: added
   description: 'feat: add client extensions (#319)  Co-authored-by: fiam <alberto@garciahierro.com>'
+- kind: fixed
+  description: 'fix: invitations icon (#317)'
+- kind: fixed
+  description: 'fix: limit banners (#316)'
 - kind: added
   description: 'feat: add banners to inform when limits crossed certain threshold (#313)  Co-authored-by: Aenimus <47415099+Aenimus@users.noreply.github.com>'
-- kind: added
-  description: Merge branches 'suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his' and 'main' of github.com:wundergraph/cosmo
-- kind: added
-  description: Merge branch 'main' of github.com:wundergraph/cosmo into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
-- kind: added
-  description: Merge branch 'main' into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
-- kind: added
-  description: Merge branch 'main' into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
-- kind: added
-  description: Merge branch 'main' of github.com:wundergraph/cosmo into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
+- kind: fixed
+  description: 'fix: fixed bug in path finding logic (#312)'
+- kind: fixed
+  description: 'fix: handle missing query root type without fields (#311)'
+- kind: fixed
+  description: 'fix: pr suggestions'
+- kind: fixed
+  description: 'fix: replace user with account'
+- kind: fixed
+  description: 'fix: ci'
+- kind: fixed
+  description: 'fix: add migrations'
+- kind: fixed
+  description: 'fix: remove migrations'
 - kind: added
   description: 'feat: add new invitations table'
-- kind: added
-  description: Merge branch 'main' into suvij/eng-4560-an-existing-user-should-not-be-required-to-update-his
+- kind: fixed
+  description: 'fix: change path of invitations'
+- kind: fixed
+  description: 'fix: make mailer optional'
+- kind: fixed
+  description: 'fix: ci'
+- kind: fixed
+  description: 'fix: pr suggestions'
+- kind: fixed
+  description: 'fix: pr suggestions'
+- kind: fixed
+  description: 'fix: ci'
+- kind: fixed
+  description: 'fix: invite flow rework'
+- kind: fixed
+  description: 'fix: store JSONB as json, avoid custom log in automaxprocs (#301)'
+- kind: fixed
+  description: 'fix: add typescript to cdn deps (#300)'
 - kind: added
   description: 'feat: add support for enabling pprof handlers (#298)'
+- kind: fixed
+  description: 'fix: view usage for enums and inputs (#299)'
 - kind: added
   description: 'feat: visualize trace (#287)'
 - kind: added
   description: 'feat: add support for outputting pushed operations as JSON (#294)'
 - kind: added
   description: 'feat: improve art (#293)'
+- kind: fixed
+  description: 'fix: correctly implement normalization (#292)'
+- kind: fixed
+  description: "fix(helm): use correct name of telemetry endpoint in router chart (#290)  Co-authored-by: Tomas Voslar <tomas.voslar@outreach.io>\r Co-authored-by: Dustin Deus <deusdustin@gmail.com>"
+- kind: fixed
+  description: 'fix: import files with extension in new commands (#289)'
+- kind: fixed
+  description: 'fix: declare cosmo-cdn package as public (#288)'
 - kind: added
   description: 'feat: add organization limits (#285)'
 - kind: added
   description: 'feat: log traceID (#284)'
+- kind: fixed
+  description: 'fix: add display names to realm.json (#283)'
 - kind: added
   description: "feat: add support for persisted operations (#249)  Add support to upload persisted operations using the CLI to the controlplane, saving them in S3 storage. From the router, add support for retrieving persisted operations from the Cosmo CDN when the client sends a request indicating a PO should be used.\r \r Persisted operations are for now scoped to the org/federated graph/client-id and can never be deleted.\r \r Additionally, persisted operation keys are always derived using the sha256 hash of the operation body. This allow us to use a content-addressable URL scheme that can be cached forever.\r \r Co-authored-by: JivusAyrus <suvijsurya76@gmail.com>\r Co-authored-by: Dustin Deus <deusdustin@gmail.com>"
+- kind: fixed
+  description: 'fix: release chart with native helm install method (#282)'
 - kind: added
   description: 'feat: improve correctness of resolving (#281)'
+- kind: fixed
+  description: 'fix:  color scheme in keycloak templates (#279)'
+- kind: fixed
+  description: 'fix: implement new color scheme (#277)'
 - kind: added
   description: 'feat: add tracing to request (#263)'
+- kind: fixed
+  description: 'fix: add env var that allows to inject custom scripts into the head (#262)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: auto set GOMAXPROCS to avoid CPU throttling on cont envs (#276)'
+- kind: fixed
+  description: 'fix: move to bitnami charts and exit 1 on migration issues (#275)'
+- kind: fixed
+  description: 'fix: remove unnecessary fields and add populate the createdBy for compositions (#272)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: [connect] Move devDependencies to dependencies (#273)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: (router) refactor cmd/main to expose router instance (#216)'
+- kind: fixed
+  description: 'fix: show latest valid subgraph schema (#259)'
+- kind: fixed
+  description: 'fix: parsing null variables (#270)  Co-authored-by: Aenimus <daviditstutt@gmail.com>'
 - kind: added
   description: 'feat: test helm chart in CI (#269)'
 - kind: added
   description: 'feat(helm): use internal dns for keycloak (#268)'
+- kind: fixed
+  description: 'fix(helm): use correct value for slack client id (#267)'
+- kind: fixed
+  description: 'fix: populate studio build with all envs (#266)'
 - kind: added
   description: 'feat(router): allow to start router without token and graph name when providing static config (#264)'
 - kind: added
   description: 'feat: consider input and argument usage for breaking change detection (#255)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: remove 10 day limit for free trial (#260)'
 - kind: added
   description: 'feat(studio): upgrade to Next 14 (#261)'
 - kind: added
   description: 'feat: add check for deleted subgraphs (#258)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: prettify operation and add play button to run the operation (#252)'
+- kind: fixed
+  description: 'fix: improve idp email styling (#256)'
+- kind: fixed
+  description: 'fix: link button styles in safari (#257)'
 - kind: added
   description: 'feat: implement @override (#246)'
+- kind: fixed
+  description: 'fix: minor ui improvements (#253)'
+- kind: fixed
+  description: 'fix: links and ui (#251)'
 - kind: added
   description: 'feat: unify and redesign login screen (#250)  Co-authored-by: StarpTech <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: invalid org slug (#248)'
 - kind: added
   description: 'feat: link operations through hash (#244)'
+- kind: fixed
+  description: 'fix: minor issues of sso (#247)'
 - kind: added
   description: 'feat: implement sso & basic RBAC in Cosmo (#220)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: add support for header forwarding with websocket requests (#212)'
+- kind: fixed
+  description: 'fix: misaligned federated graph cards (#240)'
+- kind: fixed
+  description: 'fix: optimize analytics filter queries (#242)'
+- kind: fixed
+  description: 'fix: fixed issue where pagination displayed NaN when there are no res… (#241)'
 - kind: added
   description: 'feat: automatically translate failed requests to localhost to docker.host.internal (#224)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
@@ -312,26 +802,48 @@
   description: 'chore: upgrade golang.org/x/net to fix security vulnerabilities (#238)'
 - kind: added
   description: 'feat(controlplane): avoid downloading config for latest check (#236)'
+- kind: fixed
+  description: 'fix: resolve issue single entity result in root (#237)'
+- kind: fixed
+  description: 'fix: ensure proper graphql error response when passing nil error (#233)'
 - kind: added
   description: 'feat: provide debug mode in gql collector (#230)'
 - kind: added
   description: 'feat: provide debug mode in gql collector (#229)'
 - kind: added
   description: 'feat: use ch query cache for point query (#228)'
+- kind: fixed
+  description: 'fix: remove cal package (#225)'
 - kind: added
   description: 'feat: operation checks (breaking change detection) (#214)  Co-authored-by: thisisnithin <nithinkumar5353@gmail.com>'
+- kind: fixed
+  description: 'fix: date picker improvements (#226)'
 - kind: added
   description: 'feat: add ranges to date picker (#210)'
+- kind: fixed
+  description: 'fix: don''t consider dangerous change as breaking (#222)'
+- kind: fixed
+  description: 'fix: don''t cancel metric collection on request cancellation (#221)'
 - kind: added
   description: "feat: add support for router config generation to composition-go (#218)  Extend composition-go with a new BuildRouterConfiguration() function. This allows us to use composition-go\r during integration tests instead of calling out to wgc via the command line. Update README to include instructions\r on how to keep the generated files within the library up to date."
-- kind: added
-  description: Merge remote-tracking branch 'origin/main'
+- kind: fixed
+  description: 'fix: fix team_mates demo resolver (#211)'
 - kind: added
   description: 'feat: allow to exclude certain OTEL metrics and labels from prometheus export (#209)'
 - kind: added
   description: 'feat: add support for authentication via JWKS (#200)'
+- kind: fixed
+  description: 'fix: consider request info when aggregating metrics (#207)'
+- kind: fixed
+  description: 'fix(graphqlmetrics): pass parsed DSN default options'
 - kind: added
   description: "feat: schema field level usage analytics (#174)  Co-authored-by: Jens Neuse <jens.neuse@gmx.de>\r Co-authored-by: Aenimus <daviditstutt@gmail.com>\r Co-authored-by: Nithin Kumar B <nithinkumar5353@gmail.com>\r Co-authored-by: fiam <alberto@garciahierro.com>"
+- kind: fixed
+  description: 'fix: always show top 5 in metrics overview (#203)'
+- kind: fixed
+  description: 'fix: follow GraphQL over HTTP in error handling (#199)'
+- kind: fixed
+  description: 'fix: interface union planning (#201)'
 - kind: added
   description: 'feat: allow to upsert a subgraph on publish (#196)  Co-authored-by: JivusAyrus <suvijsurya76@gmail.com>'
 - kind: added
@@ -340,42 +852,108 @@
   description: 'feat: add support for subscriptions (#185)'
 - kind: added
   description: 'feat(router): support limiting request body size (#190)'
+- kind: fixed
+  description: 'fix: redirect the user to the correct page after login (#192)'
+- kind: fixed
+  description: 'fix(controlplane): check array length (#193)'
 - kind: added
   description: 'feat: auto ignore schema errors for check command if github is integrated (#184)'
+- kind: fixed
+  description: 'fix: graphql-ws module not found (#189)'
+- kind: fixed
+  description: 'fix: allow absolute paths for the wgc compose output file (#187)'
 - kind: added
   description: 'feat: implement slack notifications (#175)  Co-authored-by: thisisnithin <nithinkumar5353@gmail.com>'
+- kind: fixed
+  description: 'fix: swallowed errors in Router.Shutdown() (#180)'
+- kind: fixed
+  description: 'fix: normalization error when querying location in demo (#178)'
+- kind: fixed
+  description: 'fix: usage of variables (#179)'
+- kind: fixed
+  description: 'fix: paths to schemas when creating demo during initial setup (#177)'
+- kind: fixed
+  description: 'fix: migration and add logs on error (#171)'
 - kind: added
   description: 'feat: add graphql client info to metric attributes (#176)'
+- kind: fixed
+  description: 'fix: update schema and config on subgraph update (#173)'
+- kind: fixed
+  description: 'fix: extract default vars (#172)'
 - kind: added
   description: 'feat: use metric data for dashboard stats (#169)'
+- kind: fixed
+  description: 'fix: ui improvements (#170)'
+- kind: fixed
+  description: 'fix: repository and owner slug swapped (#166)'
+- kind: fixed
+  description: 'fix: cli reading incorrect github sha (#162)'
 - kind: added
   description: 'feat: version metric meter (#160)'
 - kind: added
   description: "feat: use clickhouse as metric storage (#137)  Co-authored-by: Alberto García Hierro <alberto@garciahierro.com>\r Co-authored-by: Eelco Wiersma <eelco@appulse.nl>"
 - kind: added
   description: 'feat: display router initiation command (#158)'
+- kind: fixed
+  description: 'fix: log platform webhook failure as error (#159)'
 - kind: added
   description: "feat: support subgraph router url override (#152)  Co-authored-by: Clarence Manuel <rencedm112@gmail.com>\r Co-authored-by: Clarence Delmacio Manuel <71768661+cs-clarence@users.noreply.github.com>"
+- kind: fixed
+  description: 'fix: update local demo script and fix the create router token cmd (#151)'
 - kind: added
   description: 'feat: configurable webhook events (#149)'
 - kind: added
   description: 'feat: implement list and delete router tokens (#146)'
+- kind: fixed
+  description: 'fix: sdl viewer overflow (#148)'
 - kind: added
   description: 'feat: handle multiple orgs in the cli (#145)'
 - kind: added
   description: 'feat: github app integration (#140)'
+- kind: fixed
+  description: 'fix: flickering issue on change of orgs (#147)'
+- kind: fixed
+  description: 'fix: add operation attrs to request latency metric (#143)'
+- kind: fixed
+  description: 'fix: set CORS header before passing through (#142)'
 - kind: added
   description: 'feat: implement leave and delete organization (#112)'
 - kind: added
   description: 'feat: improve trail version banner and handle trial version expiry (#138)'
+- kind: fixed
+  description: 'fix: store operation Hash and Name correctly (#141)'
+- kind: fixed
+  description: 'fix: collect request metrics as early as possible (#139)'
+- kind: fixed
+  description: 'fix: add dive validation to Subgraphs field of HeaderRules config struct (#132)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: track graphql errors in metrics (#136)'
+- kind: fixed
+  description: 'fix: fixed issue where tracing elements would render on top of the page header (#134)'
+- kind: fixed
+  description: 'fix: use correct range for error rate queries (#133)'
+- kind: fixed
+  description: 'fix: update engine to address entity array issues (#131)'
 - kind: added
   description: 'feat: add 1 and 4 hour ranges, refresh button and minor improvements (#128)'
 - kind: added
   description: 'feat: output file option for cli commands (#121)'
+- kind: fixed
+  description: 'fix: click on analaytics row menu opens trace view (#125)'
+- kind: fixed
+  description: 'fix: remove member (#129)'
+- kind: fixed
+  description: 'fix: fixed issue where expired session would cause redirect loop (#127)'
+- kind: fixed
+  description: 'fix: update engine to address representation issues (#126)'
 - kind: added
   description: 'feat: support being a part of multiple organizations (#119)'
+- kind: fixed
+  description: 'fix: sanitize migrated graph label (#124)'
 - kind: added
   description: 'feat: allow arguments in @requires and @provides (#122)'
+- kind: fixed
+  description: 'fix: range in error query (#120)  Co-authored-by: Aenimus <47415099+Aenimus@users.noreply.github.com>'
 - kind: added
   description: 'feat: implement get changelog cli command (#117)'
 - kind: added
@@ -384,10 +962,16 @@
   description: 'feat: expand environmental variables in config.yaml (#108)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: support per subgraph header rules (#110)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: improved analytics queries and output (#115)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat(router): make subgraph transport timeouts configurable (#116)'
 - kind: added
   description: 'feat: add composition library for Go (#114)'
+- kind: fixed
+  description: 'fix: metrics repository and ui (#113)'
+- kind: fixed
+  description: 'fix(router): pass timeout correctly to the transport (#111)'
 - kind: added
   description: 'feat: advanced analytics (#99)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
@@ -396,33 +980,71 @@
   description: 'feat: don''t poll router config when config hasn''t changed (#105)'
 - kind: added
   description: 'feat: changelog pagination (#103)'
+- kind: fixed
+  description: 'fix: ui of a few keycloak screens (#102)'
+- kind: fixed
+  description: 'fix: update realm json and modify config (#101)'
 - kind: added
   description: 'feat: add login command (#95)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: improve session redirect (#96)'
+- kind: fixed
+  description: 'fix: composition false flag (#97)'
 - kind: added
   description: 'feat: store subgraphs in router config (#61)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: account for extension field arguments (#94)'
+- kind: fixed
+  description: 'fix: don''t poll when static router config is provided (#88)  Co-authored-by: Nithin Kumar B <nithinkumar5353@gmail.com>'
+- kind: fixed
+  description: 'fix: only redirect to login when user is actually logged out (#89)'
 - kind: added
   description: 'feat: make request timeout configurable (#87)'
+- kind: fixed
+  description: 'fix: consider nested entity keys to be shareable (#86)'
+- kind: fixed
+  description: 'fix: address __typename and fragment engine issues (#85)'
+- kind: fixed
+  description: 'fix: add handlers to the custom transport / throw error on invalid cfg path (#83)'
 - kind: added
   description: 'feat(config): support configuration of graphql path (#82)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: only log system errors as errors (#80)'
+- kind: fixed
+  description: 'fix: use relative path to read subgraph schema (#75)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: implement backoff jitter retry mechanism (#79)'
 - kind: added
   description: 'feat: enable client compression for metrics and traces (#78)'
+- kind: fixed
+  description: 'fix: api key last used update (#77)'
 - kind: added
   description: 'feat: only generate node api for router (#76)'
 - kind: added
   description: 'feat: webhooks (#66)'
 - kind: added
   description: 'feat: refactor FieldSet (#71)'
+- kind: fixed
+  description: 'fix: use a batcher to export OTEL traces in demos (#74)'
+- kind: fixed
+  description: 'fix: reduce error logs (#72)'
+- kind: fixed
+  description: 'fix: avoid excessive error logs in session handler (#70)'
 - kind: added
   description: 'feat: change logo and add identity providers (#67)'
+- kind: fixed
+  description: "fix: correct studio port in demo (#59)  Co-authored-by: Aenimus <47415099+Aenimus@users.noreply.github.com>\r Co-authored-by: Dustin Deus <deusdustin@gmail.com>"
+- kind: fixed
+  description: 'fix: labels of the migrated graphs (#65)'
+- kind: fixed
+  description: 'fix(demo): add cors headers (#64)'
+- kind: fixed
+  description: 'fix: router docs dialog (#63)'
 - kind: added
   description: 'feat: add user registration (#57)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
 - kind: added
   description: 'feat: use materialized views for traces (#51)  Co-authored-by: Dustin Deus <deusdustin@gmail.com>'
+- kind: fixed
+  description: 'fix: improve compose command input (#58)'
 - kind: added
   description: 'feat: migrate from cli-table to cli-table3 (#41)'

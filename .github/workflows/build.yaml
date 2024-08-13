@@ -39,3 +39,17 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
       - name: run default task
         run: task
+      - name: run default task
+        run: |
+          mkdir -p helm/cosmo/charts/router/
+          echo "test" > helm/cosmo/charts/router/README.md
+          echo "test" > helm/cosmo/README.md
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update helm docs and prepare release'
+          file_pattern: 'helm/**/*.md'
+          branch: test-branch
+          commit_user_name: hardworker-bot
+          commit_user_email: bot@wundergraph.com
+          commit_author: hardworker-bot <bot@wundergraph.com>
+          create_branch: true

@@ -1,31 +1,63 @@
+- kind: fixed
+  description: 'fix(bin): no cli anymore'
 - kind: added
   description: 'feat(module): broken down into smaller modules  BREAKING CHANGE: Presets have their own repos. cli and core have their own repos. This one is a pure wrapper. In the core, a new api `options.config` is added.'
+- kind: fixed
+  description: 'fix(cli): print the stack if verbose'
+- kind: fixed
+  description: 'fix(defaults): do not throw if no package.json found  Fixes #123'
 - kind: added
   description: 'feat(preset): relax JSHint message requirements  Accept any character case when parsing commit type.  Closes #129'
+- kind: fixed
+  description: 'fix(options): fix losing parserOpts without preset  `preset.parserOpts` may be undefined if no preset was specified in the options. `_.assign()` will return `undefined` if the first argument is `undefined`.  Closes #116'
 - kind: added
   description: 'feat(template): add `scope` to breaking changes  Without scope you lose the context, and you cannot easily find out if the breaking change affects you.  Fixes #93'
+- kind: fixed
+  description: 'fix(unknown-host): fallback to use the whole repo url  Fixes #98'
 - kind: added
   description: 'feat(dep): bump conventional-changelog-writer to ^0.4.1  Use the new BREAKING CHANGE syntax.'
 - kind: added
   description: 'feat(pkg): load closest package.json by default  Use read-pkg and read-pkg-up to load package.json. Also tweak the error message a little bit.  Closes #91'
 - kind: changed
   description: 'refactor(typo): conventionalChangelog'
+- kind: fixed
+  description: 'fix(preset): if scope is * for angular it should be ignored  It cannot generate correct markdown.'
+- kind: fixed
+  description: 'fix(cli): require file with absolute path  Fixes #96'
+- kind: fixed
+  description: 'fix(error): emit error if there is any async'
+- kind: fixed
+  description: 'fix(cli): require at the correct directory'
+- kind: fixed
+  description: 'fix(templates): add a missing newline after notes'
 - kind: changed
   description: 'fix(preset): jshint may contain BREAKING CHANGE footer'
 - kind: added
   description: 'feat(hosts): add support for gitlab.com repositories  Closes #86 Closes #88'
 - kind: added
   description: 'feat(preset): add codemirror'
+- kind: fixed
+  description: 'fix(preset): should still work if preset is wrong'
+- kind: fixed
+  description: 'fix(pkg): should always read package.json'
 - kind: added
   description: 'feat(context): attach your packageData'
+- kind: fixed
+  description: 'fix(cli): gracefully handle it if infile is ENOENT'
+- kind: fixed
+  description: 'fix(ember): when cannot find header in pr  Also add more tests.'
 - kind: added
   description: 'feat(preset): add ember'
 - kind: changed
   description: 'fix(err): better error handling  BREAKING CHANGE: `options.transform` is a function instead of a stream. This is more elegant and easier to handle any error.'
 - kind: added
   description: 'feat(preset): add jscs'
+- kind: fixed
+  description: 'fix(preset): gitRawCommitsOpts should be counted'
 - kind: added
   description: 'feat(compareLink): link version numbers to compare  Add `context.linkCompare` option to turn on or off this.'
+- kind: fixed
+  description: 'fix(previousTag): incase there is no commits in the first release'
 - kind: added
   description: 'feat(preset): add express'
 - kind: added
@@ -40,34 +72,60 @@
   description: 'feat(versionRange): replace allBlocks  `allBlocks` was a terrible api when you have so many logs. `versionRange` makes it easier to generate more than one versions.  BREAKING CHANGE: `allBlocks` is removed. Use `versionRange`.  Closes #77'
 - kind: changed
   description: 'perf(context): use the parsed host type if possible  Instead of using the regex to get it all the time.'
+- kind: fixed
+  description: 'fix(preset): work if more than two semver tags'
+- kind: fixed
+  description: 'fix(pkg.transform): transform should be performed before normalizing pkgData'
+- kind: fixed
+  description: 'fix(pkgRepo): get version even if no `repo.type`  Fixes #74 Closes #75'
+- kind: fixed
+  description: 'fix(cli): map pkg.path correctly'
 - kind: added
   description: 'feat(preset): add atom'
+- kind: fixed
+  description: 'fix(preset): no length limit for eslint'
 - kind: added
   description: 'feat(preset): add eslint'
+- kind: fixed
+  description: 'fix(parserOpts): options.warn should overwrite preset.parserOpts.warn'
+- kind: fixed
+  description: 'fix(parserOpts): preset.parserOpts should overwrite hostOpts'
 - kind: added
   description: 'feat(pkg): add a transform function  Note that the transform function is performed on the normalized package.json data.  BREAKING CHANGE: `options.pkg` is now an object. `options.pkg.path` is the path of the package.json and `options.pkg.transform` is the function to transform the package.json.'
 - kind: added
   description: 'feat(owner): add context.owner support'
 - kind: changed
   description: 'refactor(pkg): no need to assign an empty object  It is not used afterwards.'
+- kind: fixed
+  description: 'fix(stream): is object mode if writerOpts.includeDetails is true'
+- kind: fixed
+  description: 'fix(hosts): spelling mistake of host bitbucket  Fixes #68 Closes #69'
 - kind: added
   description: 'feat(angular): add new revert opts for the parser'
+- kind: fixed
+  description: 'fix: conventional-commits-writer -> conventional-changelog-writer'
 - kind: added
   description: 'feat(preset): add jshint'
 - kind: added
   description: 'feat(issuePrefixes): default for the hosts  Update to parser@0.0.17 syntax  Closes #59 Closes #60'
+- kind: fixed
+  description: 'fix(err): emit error if there is any in gitRawCommits and conventionalCommitsParser  Fix a variable name. Fix the precedence of `options.transform` stream.'
 - kind: added
   description: 'feat(cli): first commit of cli  Closes #31'
 - kind: added
   description: 'feat(rewrite): rewrite this module  Use smaller modules including git-raw-commits, conventional-commits-parser and conventional-commits-writer. It has better API and better project structures.  BREAKING CHANGE:  This module is rewritten so API is changed and it is not backward compatible. Please check docs and all the submodules including git-raw-commits, conventional-commits-parser and conventional-commits-writer for more information.  Closes #50 Closes #45 Closes #40 Closes #22 Closes #13 Closes #12 Closes #54 Closes #51'
-- kind: added
-  description: 'Merge pull request #58 from fbtres/master  docs(CONVENTIONS.md): fix typos'
-- kind: added
-  description: 'Merge pull request #52 from huerlisi/fixes/improve-breaking-change-docs  docs(CONVENTIONS): explain how to format breaking changes'
-- kind: added
-  description: 'Merge pull request #44 from adam-beck/patch-1  fix(writeLog): fix require statement for Writer'
+- kind: fixed
+  description: 'fix(git): generate the correct cmd of git log when there is no tags  Fixes #47 Closes #48'
+- kind: fixed
+  description: 'fix(log): correct out put for `options.from` and `options.to`  Avoid "Generating changelog from undefined to undefined".  Closes #47'
+- kind: fixed
+  description: 'fix(pkg): handle the situation where package.json cannot be found'
 - kind: changed
   description: 'refactor(): use lodash.template for code clarity  In the past, I''ve commited bugs *just because* util.format is so damn confusing to read.'
+- kind: fixed
+  description: 'fix(git): use --abbrev=0 to only get tag from same branch'
+- kind: fixed
+  description: 'fix(err): remove an extra error sentence'
 - kind: changed
   description: 'refactor(git): move git logics in git.js'
 - kind: changed
@@ -76,28 +134,44 @@
   description: 'refactor(index.js): centralize extending default options'
 - kind: changed
   description: 'refactor(version): no need to pass option.version to writer.header()'
+- kind: fixed
+  description: 'fix(version): default version is read from package.json properly  Default version was null before cb1feb7dd8f14cc55472fd0fbc229f23782c7582 hence the bug'
 - kind: changed
   description: 'refactor(writer): separate Writer and writeLog  also add a simple test for index.js'
 - kind: added
   description: 'feat(defaults): version and repository are read from package.json  as discussed in https://github.com/btford/grunt-conventional-changelog/pull/44, we think it is better if we move more logics to this main module  these defaults would also be great for cli  Closes #38'
 - kind: changed
   description: 'refactor(currentDate): use dateformat to format date'
+- kind: fixed
+  description: 'fix(header): fix no `<a>` if options.repository provided  Closes #26'
+- kind: fixed
+  description: 'fix(first commit): add first commit to changelog  First commit is always missing from changelog.'
 - kind: added
   description: 'feat(changelog): add versionText, patchVersionText options  BREAKING CHANGE:  Removed versionLink and patchVersionLink options, and went back to the default title output from 0.0.9.  If you wish to have a link to your version, simply customize the versionText and patchVersionText options.'
+- kind: fixed
+  description: 'fix(changelog): make version links work correctly'
 - kind: added
   description: 'feat(writer): add tag hyperlink support'
 - kind: added
   description: 'feat(git): allow period-separated closing and lowercase closing'
 - kind: added
   description: 'feat(changelog): add support for scope with spaces  Closes #9'
+- kind: fixed
+  description: 'fix(changelog): put commit range into quotes so it can fetch commits with special characters  Closes #10'
+- kind: fixed
+  description: 'fix(changelog): make sure breaking changes are separated by two newlines'
 - kind: added
   description: 'feat(changelog): also add `Resolves #xx` to closes section'
 - kind: added
   description: 'feat(changelog): change options.codename to options.subittle'
 - kind: added
   description: 'feat(changelog): add options.codename'
+- kind: fixed
+  description: 'fix(git): sort tags correctly'
 - kind: changed
   description: 'refactor(changelog): improve logging'
+- kind: fixed
+  description: 'fix(git): sort tags by date'
 - kind: changed
   description: 'refactor(): split code into modules  Expose a better api (especially for from and to) in preparation for conventional-github-release'
 - kind: changed
