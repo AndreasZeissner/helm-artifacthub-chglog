@@ -19,6 +19,8 @@ tasks:
       - task: test:fixture:conventional-changelog
       - task: test:fixture:cosmo
       - task: test:fixture:cosmo:dir:router
+      - task: test:fixture:cosmo-ops:helm-cosmo
+      - task: test:fixture:cosmo-ops:helm-cosmo-router
       - task: build
   .cli:
     internal: true
@@ -90,6 +92,26 @@ tasks:
           FROM_TAG: "router@0.89.2"
           TO_TAG: "router@0.13.0"
           OUTPUT: "{{ .PWD }}/_example-outputs/cosmo.yaml"
+  test:fixture:cosmo-ops:helm-cosmo:
+    deps:
+      - .test:fixture
+    cmds:
+      - task: .cli
+        vars:
+          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo-ops"
+          FROM_TAG: "helm-cosmo@0.8.9"
+          TO_TAG: "helm-cosmo@0.8.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo@0.8.9-helm-cosmo@0.8.0.yaml"
+  test:fixture:cosmo-ops:helm-cosmo-router:
+    deps:
+      - .test:fixture
+    cmds:
+      - task: .cli
+        vars:
+          REPO_URL: "{{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo-ops"
+          FROM_TAG: "helm-cosmo-router@0.7.8"
+          TO_TAG: "helm-cosmo-router@0.5.0"
+          OUTPUT: "{{ .PWD }}/_example-outputs/cosmo-ops-helm-cosmo-router@0.7.8-helm-cosmo-router@0.5.0.yaml"
   test:fixture:cosmo:dir:router:
     deps:
       - .test:fixture
@@ -115,8 +137,9 @@ tasks:
       - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/wundergraph/cosmo.git
       - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/conventional-changelog || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/conventional-changelog/conventional-changelog.git
       - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/go-siva || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/src-d/go-siva.git
-    sources:
-      - '{{ .PWD }}/{{ .TESTDATA_DIR }}/**'
+      - test -d {{ .PWD }}/{{ .TESTDATA_DIR }}/cosmo-ops || git -C {{ .PWD }}/{{ .TESTDATA_DIR }} clone https://github.com/AndreasZeissner/cosmo-ops
+    # sources:
+    #   - '{{ .PWD }}/{{ .TESTDATA_DIR }}/**'
   .test:fixture:
     internal: true
     deps:
